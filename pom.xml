@@ -14,6 +14,7 @@
         <module>hbase</module>
         <module>hive</module>
         <module>redis</module>
+        <module>kylin</module>
     </modules>
     <name>hadoopstack</name>
     <packaging>pom</packaging>

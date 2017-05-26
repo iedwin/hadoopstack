@@ -15,6 +15,7 @@
     <modules>
         <module>hbase-common</module>
         <module>hbase-book</module>
+        <module>hbase-feature</module>
     </modules>
 
     <properties>

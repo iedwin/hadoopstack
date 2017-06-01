@@ -16,6 +16,7 @@
         <module>hadoop-hdfs</module>
         <module>hadoop-rpc-client</module>
         <module>hadoop-rpc-server</module>
+        <module>hadoop-mr</module>
     </modules>
 
     <properties>

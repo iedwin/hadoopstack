@@ -12,6 +12,7 @@
     <modules>
         <module>spark-example</module>
         <module>spark-scala</module>
+        <module>spark-source</module>
     </modules>
     <properties>
         <scala.version>2.7.0</scala.version>

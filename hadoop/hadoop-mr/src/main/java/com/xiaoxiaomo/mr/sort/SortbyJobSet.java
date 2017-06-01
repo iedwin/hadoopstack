@@ -1,4 +1,4 @@
-package com.xiaoxiaomo.hadoop.sort;
+package com.xiaoxiaomo.mr.sort;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;

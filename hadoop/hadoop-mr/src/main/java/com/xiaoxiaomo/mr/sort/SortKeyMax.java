@@ -1,9 +1,8 @@
-package com.xiaoxiaomo.hadoop.sort;
+package com.xiaoxiaomo.mr.sort;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.LongWritable;
-import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
@@ -14,15 +13,14 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import java.io.IOException;
 
 /**
- * 获取手机号，并排序
- * 默认字典排序（升序）
+ * 获取最大值
  * Created by xiaoxiaomo on 2014/5/10.
  */
-public class SortMobileDesc {
+public class SortKeyMax {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
-        Job job = Job.getInstance(new Configuration(), SortMobileDesc.class.getSimpleName());
-        job.setJarByClass(SortMobileDesc.class);
+        Job job = Job.getInstance(new Configuration(), SortKeyMax.class.getSimpleName());
+        job.setJarByClass(SortKeyMax.class);
 
         //1. 数据来源
         FileInputFormat.setInputPaths(job, args[0]);
@@ -30,13 +28,13 @@ public class SortMobileDesc {
         //2. 调用map
 
         job.setMapperClass(SortMap.class);
-        job.setMapOutputKeyClass(MyLongWritable.class);
-        job.setMapOutputValueClass(NullWritable.class);
+        job.setMapOutputKeyClass(LongWritable.class);
+        job.setMapOutputValueClass(LongWritable.class);
 
         //3. 调用reduce
         job.setReducerClass(SortReduce.class);
-        job.setOutputKeyClass(MyLongWritable.class);
-        job.setOutputValueClass(NullWritable.class);
+        job.setOutputKeyClass(LongWritable.class);
+        job.setOutputValueClass(LongWritable.class);
 
         //4. 写入数据
         FileOutputFormat.setOutputPath(job, new Path(args[1]));
@@ -49,38 +47,37 @@ public class SortMobileDesc {
     /**
      * 自定义 Mapper
      */
-    static class SortMap extends Mapper<LongWritable,Text,MyLongWritable,NullWritable>{
+    static class SortMap extends Mapper<LongWritable,Text,LongWritable,LongWritable>{
 
-        MyLongWritable K2 = new MyLongWritable() ;
+        LongWritable k2 = new LongWritable() ;
+        LongWritable v2 = new LongWritable() ;
         @Override
         protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
             //处理单行数据信息
             String line = value.toString();
             String[] stirs = line.split("\t");
-            K2.set(Long.valueOf(stirs[1]));
-            context.write(K2 , NullWritable.get());
+            k2.set(Long.parseLong(stirs[0])) ;
+            v2.set(Long.parseLong(stirs[1])) ;
+            context.write( k2 , v2 );
         }
     }
 
     /**
      * 自定义 Reduce
      */
-    static class SortReduce extends Reducer<MyLongWritable , NullWritable , MyLongWritable ,NullWritable >{
+    static class SortReduce extends Reducer<LongWritable , LongWritable , LongWritable ,LongWritable >{
 
+        LongWritable k3 = new LongWritable() ;
         @Override
-        protected void reduce(MyLongWritable key, Iterable<NullWritable> values, Context context) throws IOException, InterruptedException {
-            context.write( key , NullWritable.get() );
+        protected void reduce(LongWritable key, Iterable<LongWritable> values, Context context) throws IOException, InterruptedException {
+            Long max = Long.MIN_VALUE ;
+            for (LongWritable value : values) {
+                if( max < value.get() ){
+                    max = value.get() ;
+                }
+            }
+            k3.set(max);
+            context.write(key, k3);
         }
     }
-
-    /**
-     * 自定义一个Writable 并重写compareTo方法
-     */
-    public static class MyLongWritable extends LongWritable{
-        @Override
-        public int compareTo(LongWritable o) {
-            return -super.compareTo(o);
-        }
-    }
-
 }

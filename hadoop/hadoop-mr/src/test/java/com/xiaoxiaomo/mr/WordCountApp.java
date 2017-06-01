@@ -1,4 +1,4 @@
-package com.xiaoxiaomo.hadoop.mr;
+package com.xiaoxiaomo.mr;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -26,7 +26,7 @@ public class WordCountApp {
 
         //1. 数据来源
         FileInputFormat.setInputPaths(job, args[0]);
-        FileInputFormat.setInputDirRecursive(job, true); //递归
+//        FileInputFormat.setInputDirRecursive(job, true); //递归
 
         //2. 使用Mapper计算
         job.setMapperClass(WordCountMapper.class);

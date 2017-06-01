@@ -1,4 +1,4 @@
-package com.xiaoxiaomo.hadoop.mr.array;
+package com.xiaoxiaomo.mr.array;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;

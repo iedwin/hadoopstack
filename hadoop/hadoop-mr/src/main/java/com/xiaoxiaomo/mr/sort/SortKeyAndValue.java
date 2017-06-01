@@ -1,11 +1,8 @@
-package com.xiaoxiaomo.hadoop.combiner;
+package com.xiaoxiaomo.mr.sort;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.LongWritable;
-import org.apache.hadoop.io.NullWritable;
-import org.apache.hadoop.io.Text;
-import org.apache.hadoop.io.WritableComparable;
+import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
@@ -20,12 +17,12 @@ import java.io.IOException;
  * 倒叙排序key和value
  * Created by xiaoxiaomo on 2014/5/10.
  */
-public class CombinerTest {
+public class SortKeyAndValue {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
-        Job job = Job.getInstance(new Configuration(), CombinerTest.class.getSimpleName());
-        job.setJarByClass(CombinerTest.class);
-        job.setCombinerClass(CombinerReduce.class);
+        Job job = Job.getInstance(new Configuration(), SortKeyAndValue.class.getSimpleName());
+        job.setJarByClass(SortKeyAndValue.class);
+
         //1. 数据来源
         FileInputFormat.setInputPaths(job, args[0]);
 
@@ -60,8 +57,8 @@ public class CombinerTest {
             String line = value.toString();
             String[] stirs = line.split("\t");
             myWritable.set( stirs[0] , stirs[1] );
-            System.out.println( "Map : <K , V>" + stirs[0] +" - "+  stirs[1] );
             context.write(myWritable , NullWritable.get());
+
         }
     }
 
@@ -69,20 +66,9 @@ public class CombinerTest {
      * 自定义 Reduce
      */
     static class SortReduce extends Reducer<MyWritable , NullWritable , MyWritable ,NullWritable >{
-        @Override
-        protected void reduce(MyWritable key, Iterable<NullWritable> values, Context context) throws IOException, InterruptedException {
-            System.out.println( "Reduce : <K , V>" + key );
-            context.write( key , NullWritable.get() );
-        }
-    }
 
-    /**
-     * 自定义 Reduce
-     */
-    static class CombinerReduce extends Reducer<MyWritable , NullWritable , MyWritable ,NullWritable >{
         @Override
         protected void reduce(MyWritable key, Iterable<NullWritable> values, Context context) throws IOException, InterruptedException {
-            System.out.println( " CombinerReduce : <K , V>" + key );
             context.write( key , NullWritable.get() );
         }
     }

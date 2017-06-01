@@ -15,6 +15,7 @@
         <module>hive</module>
         <module>redis</module>
         <module>kylin</module>
+        <module>spark</module>
     </modules>
     <name>hadoopstack</name>
     <packaging>pom</packaging>

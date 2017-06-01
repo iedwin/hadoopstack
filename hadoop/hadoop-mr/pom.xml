@@ -17,12 +17,130 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <profiles>
+        <profile>
+            <id>develop</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <package.environment>develop</package.environment>
+            </properties>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources/develop</directory>
+                        <includes>
+                            <include>**/*.*</include>
+                        </includes>
+                    </resource>
+                </resources>
+            </build>
+            <dependencies>
+                <dependency>
+                    <groupId>org.apache.hive</groupId>
+                    <artifactId>hive-exec</artifactId>
+                    <version>1.1.0-cdh5.10.0</version>
+                </dependency>
+                <!-- kafka-->
+                <dependency>
+                    <groupId>org.apache.kafka</groupId>
+                    <artifactId>kafka_2.10</artifactId>
+                    <version>0.9.0.0</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.hbase</groupId>
+                    <artifactId>hbase-server</artifactId>
+                    <version>1.2.0-cdh5.10.0</version>
+                </dependency>
+            </dependencies>
+        </profile>
+
+        <profile>
+            <id>product</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <package.environment>product</package.environment>
+            </properties>
+            <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources/product</directory>
+                        <includes>
+                            <include>**/*.*</include>
+                        </includes>
+                    </resource>
+                </resources>
+            </build>
+            <dependencies>
+                <dependency>
+                    <groupId>org.apache.hive</groupId>
+                    <artifactId>hive-exec</artifactId>
+                    <version>1.1.0-cdh5.5.1</version>
+                </dependency>
+                <!-- kafka-->
+                <dependency>
+                    <groupId>org.apache.kafka</groupId>
+                    <artifactId>kafka_2.11</artifactId>
+                    <version>0.9.0-kafka-2.0.1</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.hbase</groupId>
+                    <artifactId>hbase-server</artifactId>
+                    <version>1.0.0-cdh5.5.1</version>
+                </dependency>
+            </dependencies>
+        </profile>
+
+    </profiles>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass/>
+                        </manifest>
+                    </archive>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
     <dependencies>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
+            <groupId>com.xiaoxiaomo</groupId>
+            <artifactId>hbase-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <!-- fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.28</version>
         </dependency>
     </dependencies>
 </project>

@@ -11,6 +11,7 @@
     <inceptionYear>2008</inceptionYear>
     <modules>
         <module>spark-example</module>
+        <module>spark-scala</module>
     </modules>
     <properties>
         <scala.version>2.7.0</scala.version>

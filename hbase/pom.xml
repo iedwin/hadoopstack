@@ -17,6 +17,7 @@
         <module>hbase-book</module>
         <module>hbase-feature</module>
         <module>hbase-coprocessor</module>
+        <module>hbase-source</module>
     </modules>
 
     <properties>

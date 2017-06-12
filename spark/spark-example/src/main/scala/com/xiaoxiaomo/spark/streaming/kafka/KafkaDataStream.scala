@@ -2,8 +2,8 @@ package com.xiaoxiaomo.spark.streaming.kafka
 
 import java.util.Properties
 
-import com.xxo.utils.HBaseDao
-import com.xxo.utils.common.{KafkaCluster, ZKStringSerializer}
+import com.xiaoxiaomo.utils.HBaseDao
+import com.xiaoxiaomo.utils.common.{KafkaCluster, ZKStringSerializer}
 import kafka.common.TopicAndPartition
 import kafka.message.MessageAndMetadata
 import kafka.serializer.StringDecoder
@@ -18,13 +18,10 @@ import org.slf4j.{Logger, LoggerFactory}
 /**
   * spark consumer 消费kafka数据 存入到HBase
   *
-  * 运行示例，具体见配置文件：
-  * /opt/cloudera/parcels/CDH/bin/spark-submit --master yarn-client --class com.creditease.streaming.KafkaDataStream hspark-1.0.jar 1 3 1000
-  *
   * 参数：
   * 每次处理条数：timeWindow * maxRatePerPartition * partitionNum
   *
-  * Created by TangXD on 2017/4/24.
+  * Created by xiaoxiaomo on 2017/4/24.
   */
 object KafkaDataStream {
 

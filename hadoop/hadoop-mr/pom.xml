@@ -167,4 +167,16 @@
         </dependency>
 
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>google</id>
+            <url>https://maven-central.storage.googleapis.com</url>
+        </repository>
+
+        <repository>
+            <id>cloudera</id>
+            <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
+        </repository>
+    </repositories>
 </project>

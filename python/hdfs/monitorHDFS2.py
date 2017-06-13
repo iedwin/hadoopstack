@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+# hdfs库
 from hdfs.client import Client
 import datetime
 from email.mime.text import MIMEText
@@ -9,8 +10,8 @@ mail_to_list = ["jason@xiaoxiaomo.com"]  # 邮件收件人，多个用逗号隔�
 mail_host = ""  # 邮件服务器
 mail_user = "jason@xiaoxiaomo.com"  # 邮箱账户名
 
-client = Client("http://fetch-loadtest-20:50070")
-ROOT_DIR = "/user/hive/warehouse/email.db/"
+client = Client("http://namenode:50070")
+ROOT_DIR = "/user/hive/"
 CHECK_TABLE = [
     "table",
     "t_xiaoxiaomo"

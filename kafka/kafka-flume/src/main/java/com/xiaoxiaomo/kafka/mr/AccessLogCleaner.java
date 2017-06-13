@@ -1,8 +1,8 @@
 package com.xiaoxiaomo.kafka.mr;
 
-import com.xxo.utils.RedisUtils;
-import com.xxo.utils.UserAgent;
-import com.xxo.utils.UserAgentUtil;
+import com.xiaoxiaomo.kafka.utils.RedisUtils;
+import com.xiaoxiaomo.kafka.utils.UserAgent;
+import com.xiaoxiaomo.kafka.utils.UserAgentUtil;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.LongWritable;

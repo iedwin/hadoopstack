@@ -251,14 +251,14 @@
             <version>${parquet.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.twitter</groupId>
+            <groupId>org.apache.parquet</groupId>
             <artifactId>parquet-hadoop-bundle</artifactId>
-            <version>${hive.parquet.version}</version>
+            <version>${parquet.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.twitter</groupId>
+            <groupId>org.apache.parquet</groupId>
             <artifactId>parquet-hadoop-bundle</artifactId>
-            <version>${hive.parquet.version}</version>
+            <version>${parquet.version}</version>
         </dependency>
         <!-- spark-catalyst_2.11 -->
         <dependency>

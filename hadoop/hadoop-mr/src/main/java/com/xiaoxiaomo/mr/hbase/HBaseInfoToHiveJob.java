@@ -1,6 +1,6 @@
 package com.xiaoxiaomo.mr.hbase;
 
-import com.xiaoxiaomo.hbase.utils.DateUtil;
+import com.xiaoxiaomo.utils.DateUtil;
 import com.xiaoxiaomo.mr.constants.ConstantsTableInfo;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;

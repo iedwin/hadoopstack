@@ -21,6 +21,12 @@
 
         <dependency>
             <groupId>com.xiaoxiaomo</groupId>
+            <artifactId>common</artifactId>
+            <version>${hadoop-stack.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.xiaoxiaomo</groupId>
             <artifactId>hbase-commons</artifactId>
             <version>${hadoop-stack.version}</version>
         </dependency>

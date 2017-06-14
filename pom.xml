@@ -19,6 +19,7 @@
         <module>redis</module>
         <module>kylin</module>
         <module>spark</module>
+        <module>common</module>
     </modules>
 
     <properties>

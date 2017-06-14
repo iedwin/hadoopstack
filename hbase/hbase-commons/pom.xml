@@ -8,30 +8,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>hbase-commons</artifactId>
-    <packaging>pom</packaging>
-
-    <name>hbase-commons</name>
+    <packaging>jar</packaging>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <build>
-        <finalName>hbase-commons</finalName>
-        <plugins>
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <executions>  <!--执行器 mvn assembly:assembly-->
-                    <execution>
-                        <id>hbase-commons</id><!--名字任意 -->
-                        <phase>package</phase><!-- 绑定到package生命周期阶段上 -->
-                        <goals>
-                            <goal>single</goal><!-- 只运行一次 -->
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

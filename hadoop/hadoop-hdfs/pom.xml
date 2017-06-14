@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>hadoop-hdfs</artifactId>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
     <name>hadoop-hdfs</name>
     <url>http://maven.apache.org</url>

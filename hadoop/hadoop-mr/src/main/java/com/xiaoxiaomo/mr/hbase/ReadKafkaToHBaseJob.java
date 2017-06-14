@@ -73,7 +73,7 @@ public class ReadKafkaToHBaseJob extends Configured implements Tool {
             simpleDateFormat.parse(kafkaDate);
             conf.set(KafkaInputFormat.CONFIG_ETL_DATE, kafkaDate);
         } catch (Exception ex) {
-            logger.error("####Invalid date:{},must be:yyyy-MM-dd", kafkaDate);
+            logger.error("date:{},must be:yyyy-MM-dd", kafkaDate);
         }
         String temp_output = output + "/" + kafkaDate.toString();
 
@@ -98,6 +98,9 @@ public class ReadKafkaToHBaseJob extends Configured implements Tool {
 		return job.waitForCompletion(true) ? 0 : -1;
 	}
 
+	/**
+	 *
+	 */
 	static class KafkaToHBaseMapper extends
 			Mapper<MsgMetadataWritable, BytesWritable, Text, Text> {
 

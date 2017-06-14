@@ -3,7 +3,7 @@
     <parent>
         <artifactId>hbase</artifactId>
         <groupId>com.xiaoxiaomo</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>${hadoop-stack.version}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -15,5 +15,23 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <build>
+        <finalName>hbase-commons</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>  <!--执行器 mvn assembly:assembly-->
+                    <execution>
+                        <id>hbase-commons</id><!--名字任意 -->
+                        <phase>package</phase><!-- 绑定到package生命周期阶段上 -->
+                        <goals>
+                            <goal>single</goal><!-- 只运行一次 -->
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

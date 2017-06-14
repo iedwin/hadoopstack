@@ -3,18 +3,17 @@
     <parent>
         <artifactId>hadoopstack</artifactId>
         <groupId>com.xiaoxiaomo</groupId>
-        <version>1.0.0</version>
+        <version>${hadoop-stack.version}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>flink</artifactId>
     <packaging>pom</packaging>
-
+    <version>${hadoop-stack.version}</version>
     <name>flink</name>
     <url>http://maven.apache.org</url>
     <modules>
         <module>flink-batch</module>
-        <module>flink-streaming</module>
         <module>flink-streaming</module>
         <module>flink-table</module>
     </modules>
@@ -35,5 +34,6 @@
             <artifactId>flink-clients_${scala.binary.version}</artifactId>
             <version>${flink.version}</version>
         </dependency>
+
     </dependencies>
 </project>

@@ -1,4 +1,4 @@
-package com.xiaoxiaomo.hbase.utils;
+package com.xiaoxiaomo.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

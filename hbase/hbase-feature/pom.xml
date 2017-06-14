@@ -3,7 +3,7 @@
     <parent>
         <artifactId>hbase</artifactId>
         <groupId>com.xiaoxiaomo</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>${hadoop-stack.version}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -18,6 +18,12 @@
     </properties>
 
     <dependencies>
+
+        <dependency>
+            <groupId>com.xiaoxiaomo</groupId>
+            <artifactId>common</artifactId>
+            <version>${hadoop-stack.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>com.xiaoxiaomo</groupId>

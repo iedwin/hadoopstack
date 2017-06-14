@@ -1,7 +1,7 @@
 package com.xiaoxiaomo.mr.hive;
 
 import com.alibaba.fastjson.JSONObject;
-import com.xiaoxiaomo.hbase.utils.MD5;
+import com.xiaoxiaomo.utils.MD5;
 import com.xiaoxiaomo.mr.constants.ConstantsTableInfo;
 import com.xiaoxiaomo.mr.utils.kafka.CheckpointManager;
 import com.xiaoxiaomo.mr.utils.kafka.KafkaInputFormat;

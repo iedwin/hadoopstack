@@ -36,6 +36,8 @@
         <solr-solrj.version>4.10.3</solr-solrj.version>
         <fastjson.version>1.2.28</fastjson.version>
 
+        <kylin.version>2.0.0</kylin.version>
+
         <httpclient.vesion>4.4</httpclient.vesion>
         <htmlcleaner.version>2.13</htmlcleaner.version>
         <protobuf-java.version>2.6.1</protobuf-java.version>

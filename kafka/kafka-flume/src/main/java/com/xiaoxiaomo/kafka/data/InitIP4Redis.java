@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 
-import com.xxo.utils.RedisUtils;
+import com.xiaoxiaomo.kafka.utils.RedisUtils;
 import redis.clients.jedis.Jedis;
 
 public class InitIP4Redis {

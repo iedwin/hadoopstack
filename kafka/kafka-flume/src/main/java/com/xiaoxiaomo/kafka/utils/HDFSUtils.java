@@ -17,7 +17,7 @@ public class HDFSUtils {
 	public static void main(String[] args) throws Exception {
 		HDFSUtils hdfsUtils=new HDFSUtils();
 		Configuration conf=new Configuration();
-		String localPath="D:\\课堂\\互联网数据的接入与清洗\\ip.data";
+		String localPath="D:\\互联网数据的接入与清洗\\ip.data";
 		String ipPath="hdfs://xxo156.xxo:9000/util/ip.data";
 		hdfsUtils.uplaod(conf,localPath,ipPath,false);
 		hdfsUtils.readLine(conf, ipPath,false);

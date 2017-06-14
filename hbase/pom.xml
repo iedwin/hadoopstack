@@ -13,7 +13,7 @@
     <name>hbase</name>
     <url>http://maven.apache.org</url>
     <modules>
-        <module>hbase-common</module>
+        <module>hbase-commons</module>
         <module>hbase-book</module>
         <module>hbase-feature</module>
         <module>hbase-coprocessor</module>
@@ -26,28 +26,28 @@
 
     <dependencies>
 
-        <!-- hadoop begin -->
+        <!-- hadoop -->
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-common</artifactId>
-            <version>2.6.0</version>
+            <version>${hadoop.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-client</artifactId>
-            <version>2.6.0</version>
+            <version>${hadoop.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.hadoop</groupId>
             <artifactId>hadoop-hdfs</artifactId>
-            <version>2.6.0</version>
+            <version>${hadoop.version}</version>
         </dependency>
 
-        <!-- hbase start -->
+        <!-- hbase -->
         <dependency>
             <groupId>org.apache.hbase</groupId>
             <artifactId>hbase-client</artifactId>
-            <version>1.1.1</version>
+            <version>${hbase.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>com.google.protobuf</groupId>
@@ -58,12 +58,12 @@
         <dependency>
             <groupId>org.apache.hbase</groupId>
             <artifactId>hbase-shell</artifactId>
-            <version>1.1.1</version>
+            <version>${hbase.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.hbase</groupId>
             <artifactId>hbase-server</artifactId>
-            <version>1.1.1</version>
+            <version>${hbase.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>com.google.protobuf</groupId>
@@ -75,102 +75,83 @@
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java</artifactId>
-            <version>2.6.1</version>
+            <version>${protobuf-java.version}</version>
         </dependency>
-
-
-
-
 
         <!-- httpclient依赖 -->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
-            <version>4.4</version>
+            <version>${httpclient.vesion}</version>
         </dependency>
-
 
         <!-- htmlcleaner依赖 -->
         <dependency>
             <groupId>net.sourceforge.htmlcleaner</groupId>
             <artifactId>htmlcleaner</artifactId>
-            <version>2.13</version>
+            <version>${htmlcleaner.version}</version>
         </dependency>
 
         <!-- json工具包 -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.7</version>
+            <version>${fastjson.version}</version>
         </dependency>
 
         <!-- dbunits -->
         <dependency>
             <groupId>commons-dbutils</groupId>
             <artifactId>commons-dbutils</artifactId>
-            <version>1.6</version>
+            <version>${commons-dbutils.version}</version>
         </dependency>
 
         <!-- mysql -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.29</version>
+            <version>${mysql.version}</version>
         </dependency>
 
         <!-- redis依赖 -->
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <version>2.8.0</version>
+            <version>${jedis.version}</version>
         </dependency>
 
         <!-- 日志 -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
-            <version>1.7.10</version>
+            <version>${slf4j.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>
-            <version>1.7.10</version>
+            <version>${slf4j.version}</version>
         </dependency>
 
         <!-- quartz定时器 -->
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
-            <version>1.8.5</version>
+            <version>${quartz.version}</version>
         </dependency>
         <!-- c3p0 -->
         <dependency>
             <groupId>c3p0</groupId>
             <artifactId>c3p0</artifactId>
-            <version>0.9.1.2</version>
+            <version>${c3p0.version}</version>
         </dependency>
 
         <!-- curator -->
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-recipes</artifactId>
-            <version>2.7.1</version>
+            <version>${curator-recipes.version}</version>
         </dependency>
 
-        <!--<dependency>-->
-        <!--<groupId>org.apache.storm</groupId>-->
-        <!--<artifactId>storm-core</artifactId>-->
-        <!--<version>0.9.3</version>-->
-        <!--</dependency>-->
-
-
-        <!-- test -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
 

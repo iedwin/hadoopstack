@@ -17,7 +17,6 @@
     </properties>
 
     <build>
-
         <sourceDirectory>src/main/scala</sourceDirectory>
         <testSourceDirectory>src/test/scala</testSourceDirectory>
         <resources>
@@ -97,286 +96,131 @@
         </plugins>
     </build>
 
-
-    <profiles>
-        <profile>
-            <id>product</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <properties>
-                <package.environment>product</package.environment>
-            </properties>
-            <build>
-                <resources>
-                    <resource>
-                        <directory>src/main/resources/product</directory>
-                        <includes>
-                            <include>**/*.*</include>
-                        </includes>
-                    </resource>
-                </resources>
-            </build>
-            <dependencies>
-                <dependency>
-                    <groupId>org.apache.hadoop</groupId>
-                    <artifactId>hadoop-client</artifactId>
-                    <version>2.6.0-mr1-cdh5.5.1</version>
-                </dependency>
-                <!--spark -->
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-core_2.10</artifactId>
-                    <version>1.5.0-cdh5.5.1</version>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-assembly_2.10</artifactId>
-                    <version>1.5.0-cdh5.5.1</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-repl_2.10</artifactId>
-                    <version>1.5.0-cdh5.5.1</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-catalyst_2.10</artifactId>
-                    <version>1.5.0-cdh5.5.1</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-network-common_2.10</artifactId>
-                    <version>1.5.0-cdh5.5.1</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-launcher_2.10</artifactId>
-                    <version>1.5.0-cdh5.5.1</version>
-                    <scope>provided</scope>
-                </dependency>
-                <!--spark on yarn -->
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-yarn_2.10</artifactId>
-                    <version>1.5.0-cdh5.5.1</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-network-yarn_2.10</artifactId>
-                    <version>1.5.0-cdh5.5.1</version>
-                </dependency>
-                <!--spark-streaming -->
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-streaming-flume_2.10</artifactId>
-                    <version>1.5.0-cdh5.5.1</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-streaming-flume-sink_2.10</artifactId>
-                    <version>1.5.0-cdh5.5.1</version>
-                </dependency>
-                <!--spark-sql -->
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-sql_2.10</artifactId>
-                    <version>1.5.0-cdh5.5.1</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-hive_2.10</artifactId>
-                    <version>1.5.0-cdh5.5.1</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-hive_2.10</artifactId>
-                    <version>1.5.0-cdh5.5.1</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-streaming_2.10</artifactId>
-                    <version>1.5.0-cdh5.5.1</version>
-                    <scope>provided</scope>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-streaming-kafka_2.10</artifactId>
-                    <version>1.5.0-cdh5.5.1</version>
-                </dependency>
-                <!-- HBase -->
-                <dependency>
-                    <groupId>org.apache.hbase</groupId>
-                    <artifactId>hbase-server</artifactId>
-                    <version>1.0.0-cdh5.5.1</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.hbase</groupId>
-                    <artifactId>hbase-client</artifactId>
-                    <version>1.0.0-cdh5.5.1</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.hbase</groupId>
-                    <artifactId>hbase-hadoop-compat</artifactId>
-                    <version>1.0.0-cdh5.5.1</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.zookeeper</groupId>
-                    <artifactId>zookeeper</artifactId>
-                    <version>3.4.5-cdh5.5.1</version>
-                </dependency>
-            </dependencies>
-        </profile>
-
-        <profile>
-            <id>develop</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <package.environment>develop</package.environment>
-            </properties>
-            <build>
-                <resources>
-                    <resource>
-                        <directory>src/main/resources/develop</directory>
-                        <includes>
-                            <include>**/*.*</include>
-                        </includes>
-                    </resource>
-                </resources>
-            </build>
-            <dependencies>
-                <!--spark -->
-                <dependency>
-                    <groupId>org.apache.hadoop</groupId>
-                    <artifactId>hadoop-client</artifactId>
-                    <version>2.6.0-mr1-cdh5.10.0</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-core_2.10</artifactId>
-                    <version>1.6.0-cdh5.10.0</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-assembly_2.10</artifactId>
-                    <version>1.6.0-cdh5.10.0</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-repl_2.10</artifactId>
-                    <version>1.6.0-cdh5.10.0</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-catalyst_2.10</artifactId>
-                    <version>1.6.0-cdh5.10.0</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-network-common_2.10</artifactId>
-                    <version>1.6.0-cdh5.10.0</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-launcher_2.10</artifactId>
-                    <version>1.6.0-cdh5.10.0</version>
-                    <scope>provided</scope>
-                </dependency>
-                <!--spark on yarn -->
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-yarn_2.10</artifactId>
-                    <version>1.6.0-cdh5.10.0</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-network-yarn_2.10</artifactId>
-                    <version>1.6.0-cdh5.10.0</version>
-                </dependency>
-                <!--spark-sql -->
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-sql_2.10</artifactId>
-                    <version>1.6.0-cdh5.10.0</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-hive_2.10</artifactId>
-                    <version>1.6.0-cdh5.10.0</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-hive_2.10</artifactId>
-                    <version>1.6.0-cdh5.10.0</version>
-                </dependency>
-                <!--spark-streaming -->
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-streaming-flume_2.10</artifactId>
-                    <version>1.6.0-cdh5.10.0</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-streaming-flume-sink_2.10</artifactId>
-                    <version>1.6.0-cdh5.10.0</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-streaming_2.10</artifactId>
-                    <version>1.6.0-cdh5.10.0</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.spark</groupId>
-                    <artifactId>spark-streaming-kafka_2.10</artifactId>
-                    <version>1.6.0-cdh5.10.0</version>
-                </dependency>
-                <!-- HBase -->
-                <dependency>
-                    <groupId>org.apache.hbase</groupId>
-                    <artifactId>hbase-server</artifactId>
-                    <version>1.2.0-cdh5.10.0</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.hbase</groupId>
-                    <artifactId>hbase-client</artifactId>
-                    <version>1.2.0-cdh5.10.0</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.hbase</groupId>
-                    <artifactId>hbase-hadoop-compat</artifactId>
-                    <version>1.2.0-cdh5.10.0</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.apache.zookeeper</groupId>
-                    <artifactId>zookeeper</artifactId>
-                    <version>3.4.5-cdh5.10.0</version>
-                </dependency>
-            </dependencies>
-        </profile>
-    </profiles>
-
     <dependencies>
+        <!--spark -->
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-client</artifactId>
+            <version>${hadoop.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_2.10</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-assembly_2.10</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-repl_2.10</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-catalyst_2.10</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-network-common_2.10</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-launcher_2.10</artifactId>
+            <version>${spark.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--spark on yarn -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-yarn_2.10</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-network-yarn_2.10</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <!--spark-sql -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql_2.10</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-hive_2.10</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-hive_2.10</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <!--spark-streaming -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming-flume_2.10</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming-flume-sink_2.10</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming_2.10</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming-kafka_2.10</artifactId>
+            <version>${spark.version}</version>
+        </dependency>
+        <!-- HBase -->
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-server</artifactId>
+            <version>${hbase.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-client</artifactId>
+            <version>${hbase.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-hadoop-compat</artifactId>
+            <version>${hbase.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>${zookeeper.version}</version>
+        </dependency>
 
         <!-- fastjson -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.28</version>
+            <version>${fastjson.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.101tec</groupId>
             <artifactId>zkclient</artifactId>
-            <version>0.9</version>
+            <version>${zkclient.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.cassandra</groupId>
             <artifactId>cassandra-all</artifactId>
-            <version>1.2.6</version>
+            <version>${cassandra-all.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>com.google.guava</groupId>
@@ -437,7 +281,7 @@
         <dependency>
             <groupId>org.apache.hbase</groupId>
             <artifactId>hbase-testing-util</artifactId>
-            <version>0.98.7-hadoop2</version>
+            <version>${hbase.version}</version>
             <exclusions>
                 <exclusion>
                     <!-- SPARK-4455 -->
@@ -453,13 +297,13 @@
         <dependency>
             <groupId>org.apache.hbase</groupId>
             <artifactId>hbase-protocol</artifactId>
-            <version>0.98.7-hadoop2</version>
+            <version>${hbase.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.hbase</groupId>
             <artifactId>hbase-common</artifactId>
-            <version>0.98.7-hadoop2</version>
+            <version>${hbase.version}</version>
             <exclusions>
                 <exclusion>
                     <!-- SPARK-4455 -->

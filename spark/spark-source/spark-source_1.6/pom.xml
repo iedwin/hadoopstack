@@ -16,28 +16,11 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <parquet.version>1.7.0</parquet.version>
-        <hive.parquet.version>1.6.0</hive.parquet.version>
     </properties>
 
 
     <build>
-
-        <!--<sourceDirectory>/src/main/scala</sourceDirectory>
-        <testSourceDirectory>src/test/scala</testSourceDirectory>-->
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-        </resources>
-        <testResources>
-            <testResource>
-                <directory>src/test/resources</directory>
-            </testResource>
-        </testResources>
-
         <plugins>
-
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
@@ -144,76 +127,71 @@
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-core_2.10</artifactId>
-            <version>1.6.0</version>
+            <version>${spark.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-sql_2.10</artifactId>
-            <version>1.6.0</version>
+            <version>${spark.version}</version>
         </dependency>
 
         <!-- streaming -->
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-streaming_2.10</artifactId>
-            <version>1.6.0</version>
+            <version>${spark.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-streaming-kafka_2.10</artifactId>
-            <version>1.6.0</version>
+            <version>${spark.version}</version>
         </dependency>
-        <!--<dependency>-->
-        <!--<groupId>org.apache.spark</groupId>-->
-        <!--<artifactId>spark-streaming-kafka-assembly_2.10</artifactId>-->
-        <!--<version>1.6.0</version>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-streaming-flume_2.10</artifactId>
-            <version>1.6.0</version>
+            <version>${spark.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-streaming-flume-sink_2.10</artifactId>
-            <version>1.6.0</version>
+            <version>${spark.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-streaming-twitter_2.10</artifactId>
-            <version>1.6.0</version>
+            <version>${spark.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-yarn_2.10</artifactId>
-            <version>1.6.0</version>
+            <version>${spark.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.spark/spark-unsafe_2.10 -->
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-unsafe_2.10</artifactId>
-            <version>1.6.0</version>
+            <version>${spark.version}</version>
         </dependency>
 
 
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-mllib_2.10</artifactId>
-            <version>1.6.0</version>
+            <version>${spark.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-graphx_2.10</artifactId>
-            <version>1.6.0</version>
+            <version>${spark.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-hive_2.10</artifactId>
-            <version>1.6.0</version>
+            <version>${spark.version}</version>
         </dependency>
 
         <dependency>
@@ -225,30 +203,30 @@
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-test-tags_2.10</artifactId>
-            <version>1.6.0</version>
+            <version>${spark.version}</version>
         </dependency>
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId> spark-network-shuffle_2.10</artifactId>
-            <version>1.6.0</version>
+            <artifactId>spark-network-shuffle_2.10</artifactId>
+            <version>${spark.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.apache.spark</groupId>
-            <artifactId> spark-tags_2.10</artifactId>
-            <version>2.0.0</version>
+            <artifactId>spark-tags_2.10</artifactId>
+            <version>${spark-tags.version}</version>
         </dependency>
 
         <!-- jetty -->
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-server</artifactId>
-            <version>8.1.19.v20160209</version>
+            <version>${jetty.version}</version>
         </dependency>
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-webapp</artifactId>
-            <version>8.1.19.v20160209</version>
+            <version>${jetty.version}</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.parquet/parquet-hadoop -->
@@ -273,27 +251,27 @@
             <version>${parquet.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.twitter</groupId>
+            <groupId>org.apache.parquet</groupId>
             <artifactId>parquet-hadoop-bundle</artifactId>
-            <version>${hive.parquet.version}</version>
+            <version>${parquet.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.twitter</groupId>
+            <groupId>org.apache.parquet</groupId>
             <artifactId>parquet-hadoop-bundle</artifactId>
-            <version>${hive.parquet.version}</version>
+            <version>${parquet.version}</version>
         </dependency>
         <!-- spark-catalyst_2.11 -->
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-catalyst_2.10</artifactId>
-            <version>1.6.0</version>
+            <version>${spark.version}</version>
         </dependency>
 
         <!-- kafka_2.10 -->
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka_2.10</artifactId>
-            <version>0.9.0-kafka-2.0.2</version>
+            <version>${kafka_2.10.version}</version>
         </dependency>
 
 

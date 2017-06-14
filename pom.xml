@@ -7,6 +7,9 @@
     <groupId>com.xiaoxiaomo</groupId>
     <artifactId>hadoopstack</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>hadoopstack</name>
+    <packaging>pom</packaging>
+
     <modules>
         <module>hadoop</module>
         <module>kafka</module>
@@ -17,91 +20,83 @@
         <module>kylin</module>
         <module>spark</module>
     </modules>
-    <name>hadoopstack</name>
-    <packaging>pom</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <hadoop-stack.version>1.0-SNAPSHOT</hadoop-stack.version>
+
+        <hadoop.version>2.6.0</hadoop.version>
+        <hbase.version>1.2.0</hbase.version>
+        <hive.version>1.1.0</hive.version>
+
+        <spark.version>1.6.0</spark.version>
+        <spark-tags.version>2.0.0</spark-tags.version>
+        <parquet.version>1.7.0</parquet.version>
+
+        <kafka_2.10.version>0.9.0.0</kafka_2.10.version>
+        <kafka_2.11.version>0.9.0.0</kafka_2.11.version>
+
+        <flume.version>1.6.0</flume.version>
+        <storm.version>0.9.3</storm.version>
+
+
+        <kylin.version>2.0.0</kylin.version>
+        <zookeeper.version>3.4.5</zookeeper.version>
+        <zkclient.version>0.9</zkclient.version>
+
+        <solr.version>4.10.3</solr.version>
+
+        <spring.vesion>3.2.0.RELEASE</spring.vesion>
+        <hibernate.version>3.6.10.Final</hibernate.version>
+        <hibernate-jpa.version>1.0.1.Final</hibernate-jpa.version>
+
+        <fastjson.version>1.2.31</fastjson.version>
+        <servlet-api>2.5</servlet-api>
+        <jsp-api.version>2.0</jsp-api.version>
+        <jstl.version>1.2</jstl.version>
+        <standard.version>1.1.2</standard.version>
+
+        <jtds.version>1.2.4</jtds.version>
+        <json.version>20140107</json.version>
+        <jackson.version>1.9.13</jackson.version>
+        <gson.version>2.3</gson.version>
+        <jxl.version>2.6.12</jxl.version>
+        <mail.version>1.4.4</mail.version>
+        <freemarker.version>2.3.19</freemarker.version>
+        <commons-httpclient.vesion>3.0.1</commons-httpclient.vesion>
+        <commons-lang3.version>3.3.1</commons-lang3.version>
+        <commons-fileupload.version>1.3.1</commons-fileupload.version>
+        <commons-io.version>2.4</commons-io.version>
+        <commons-dbcp.version>1.4</commons-dbcp.version>
+        <commons-codec.version>1.9</commons-codec.version>
+        <commons-dbutils.version>1.6</commons-dbutils.version>
+        <javassist.version>3.12.1.GA</javassist.version>
+        <guava.version>18.0</guava.version>
+        <maven-ant-tasks.version>2.1.3</maven-ant-tasks.version>
+
+        <cassandra-all.version>1.2.6</cassandra-all.version>
+        <httpclient.vesion>4.4</httpclient.vesion>
+        <htmlcleaner.version>2.13</htmlcleaner.version>
+        <jetty.version>8.1.19.v20160209</jetty.version>
+        <protobuf-java.version>2.6.1</protobuf-java.version>
+        <mysql.version>5.1.29</mysql.version>
+        <jedis.version>2.8.0</jedis.version>
+        <poi.version>3.9</poi.version>
+        <quartz.version>1.8.5</quartz.version>
+        <c3p0.version>0.9.1.2</c3p0.version>
+        <curator-recipes.version>2.7.1</curator-recipes.version>
+        <slf4j.version>1.7.10</slf4j.version>
+        <log4j.version>1.2.16</log4j.version>
+        <junit.version>4.12</junit.version>
+        <mrunit.version>1.0.0</mrunit.version>
+    </properties>
 
     <dependencies>
-
-
-        <!--hadoop 依赖-->
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-common</artifactId>
-            <version>2.6.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-client</artifactId>
-            <version>2.6.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-hdfs</artifactId>
-            <version>2.6.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-yarn-common</artifactId>
-            <version>2.6.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-yarn-client</artifactId>
-            <version>2.6.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-yarn-server-common</artifactId>
-            <version>2.6.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-yarn-server-resourcemanager</artifactId>
-            <version>2.6.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-yarn-server-nodemanager</artifactId>
-            <version>2.6.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-yarn-server-applicationhistoryservice</artifactId>
-            <version>2.6.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-mapreduce-client-core</artifactId>
-            <version>2.6.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-mapreduce-client-shuffle</artifactId>
-            <version>2.6.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.poi</groupId>
-            <artifactId>poi</artifactId>
-            <version>3.9</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.mrunit</groupId>
-            <artifactId>mrunit</artifactId>
-            <version>1.0.0</version>
-            <classifier>hadoop2</classifier>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- junit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>${junit.version}</version>
         </dependency>
-
     </dependencies>
-
 
 </project>

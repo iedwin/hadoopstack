@@ -1,4 +1,4 @@
-package com.xiaoxiaomo.hive.mr;
+package com.xiaoxiaomo.mr.count;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;

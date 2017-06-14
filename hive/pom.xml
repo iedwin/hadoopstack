@@ -23,5 +23,12 @@
             <artifactId>hive-exec</artifactId>
             <version>${hive.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-common</artifactId>
+            <version>${hadoop.version}</version>
+        </dependency>
+
     </dependencies>
 </project>

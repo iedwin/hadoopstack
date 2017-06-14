@@ -45,6 +45,7 @@
         <kylin.version>2.0.0</kylin.version>
         <zookeeper.version>3.4.5</zookeeper.version>
         <zkclient.version>0.9</zkclient.version>
+        <spark-tags.version>2.0.0</spark-tags.version>
 
         <spring.vesion>3.2.0.RELEASE</spring.vesion>
         <hibernate.version>3.6.10.Final</hibernate.version>
@@ -90,17 +91,11 @@
     </properties>
 
     <dependencies>
-
-
-
-        <!-- junit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
         </dependency>
-
     </dependencies>
-
 
 </project>

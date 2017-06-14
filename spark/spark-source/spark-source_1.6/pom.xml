@@ -214,7 +214,7 @@
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-tags_2.10</artifactId>
-            <version>${spark.version}</version>
+            <version>${spark-tags.version}</version>
         </dependency>
 
         <!-- jetty -->
@@ -271,7 +271,7 @@
         <dependency>
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka_2.10</artifactId>
-            <version>${kafka.version}</version>
+            <version>${kafka_2.10.version}</version>
         </dependency>
 
 

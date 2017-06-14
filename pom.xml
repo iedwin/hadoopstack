@@ -20,6 +20,7 @@
         <module>kylin</module>
         <module>spark</module>
         <module>common</module>
+        <module>flink</module>
     </modules>
 
     <properties>
@@ -37,18 +38,16 @@
         <spark-tags.version>2.0.0</spark-tags.version>
         <parquet.version>1.7.0</parquet.version>
 
-        <kafka_2.10.version>0.9.0.0</kafka_2.10.version>
-        <kafka_2.11.version>0.9.0.0</kafka_2.11.version>
+        <scala.binary.version>2.10</scala.binary.version>
 
+        <kafka.version>0.9.0.0</kafka.version>
         <flume.version>1.6.0</flume.version>
         <storm.version>0.9.3</storm.version>
-
-
         <kylin.version>2.0.0</kylin.version>
         <zookeeper.version>3.4.5</zookeeper.version>
         <zkclient.version>0.9</zkclient.version>
-
         <solr.version>4.10.3</solr.version>
+        <flink.version>1.2.1</flink.version>
 
         <spring.vesion>3.2.0.RELEASE</spring.vesion>
         <hibernate.version>3.6.10.Final</hibernate.version>

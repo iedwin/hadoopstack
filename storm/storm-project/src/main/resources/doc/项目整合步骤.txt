@@ -124,8 +124,8 @@ kafka和storm整合
 		过滤掉kafka中的log4j实现类的依赖
 		<dependency>
 			<groupId>org.apache.kafka</groupId>
-			<artifactId>kafka_2.11</artifactId>
-			<version>0.8.2.2</version>
+			<artifactId>kafka_${}</artifactId>
+			<version>${kafka.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.slf4j</groupId>

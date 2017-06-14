@@ -7,11 +7,16 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>hive</artifactId>
-    <packaging>jar</packaging>
-
-    <name>hive</name>
+    <artifactId>flink</artifactId>
+    <packaging>pom</packaging>
+    <version>${hadoop-stack.version}</version>
+    <name>flink</name>
     <url>http://maven.apache.org</url>
+    <modules>
+        <module>flink-batch</module>
+        <module>flink-streaming</module>
+        <module>flink-table</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -19,15 +24,15 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.apache.hive</groupId>
-            <artifactId>hive-exec</artifactId>
-            <version>${hive.version}</version>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-core</artifactId>
+            <version>${flink.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-common</artifactId>
-            <version>${hadoop.version}</version>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-clients_${scala.binary.version}</artifactId>
+            <version>${flink.version}</version>
         </dependency>
 
     </dependencies>

@@ -7,10 +7,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>hbase-common</artifactId>
+    <artifactId>hbase-commons</artifactId>
     <packaging>pom</packaging>
 
-    <name>hbase-common</name>
+    <name>hbase-commons</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

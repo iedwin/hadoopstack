@@ -77,7 +77,7 @@
 
         <dependency>
             <groupId>com.xiaoxiaomo</groupId>
-            <artifactId>hbase-common</artifactId>
+            <artifactId>hbase-commons</artifactId>
             <version>${hadoop-stack.version}</version>
         </dependency>
 

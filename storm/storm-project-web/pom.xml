@@ -162,7 +162,7 @@
         <dependency>
             <groupId>commons-httpclient</groupId>
             <artifactId>commons-httpclient</artifactId>
-            <version>${commons-httpclient.vesion>}</version>
+            <version>${commons-httpclient.vesion}</version>
         </dependency>
         <!-- dbunits -->
         <dependency>

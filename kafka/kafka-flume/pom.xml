@@ -39,7 +39,7 @@
         <dependency>
             <groupId>org.apache.flume.flume-ng-sinks</groupId>
             <artifactId>flume-ng-kafka-sink</artifactId>
-            <version>${flume-ng-kafka-sink.version}</version>
+            <version>${flume.version}</version>
         </dependency>
 
         <!-- jedis -->

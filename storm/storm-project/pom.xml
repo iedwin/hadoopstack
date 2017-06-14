@@ -41,8 +41,8 @@
         <!-- kafka -->
         <dependency>
             <groupId>org.apache.kafka</groupId>
-            <artifactId>kafka_2.11</artifactId>
-            <version>${kafka_2.11.version}</version>
+            <artifactId>kafka_${scala.binary.version}</artifactId>
+            <version>${kafka.version}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.slf4j</groupId>

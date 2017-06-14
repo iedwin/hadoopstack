@@ -22,7 +22,7 @@
         <dependency>
             <groupId>com.xiaoxiaomo</groupId>
             <artifactId>hbase-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${hadoop-stack.version}</version>
         </dependency>
     </dependencies>
 </project>

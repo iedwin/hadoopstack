@@ -21,7 +21,7 @@ public class SocketWindowWordCount {
 
     public static void main(String[] args) throws Exception {
 
-        // the host and the port to connect to
+        // 1. 获取参数
         final String hostname;
         final int port;
         try {
@@ -37,13 +37,13 @@ public class SocketWindowWordCount {
             return;
         }
 
-        // get the execution environment
+        // 2. 获取streaming环境
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
-        // get input data by connecting to the socket
+        // 3. 获取socketTextStream
         DataStream<String> text = env.socketTextStream(hostname, port, "\n");
 
-        // parse the data, group it, window it, and aggregate the counts
+        // 4. 解析数据
         DataStream<WordWithCount> windowCounts = text
 
                 .flatMap(new FlatMapFunction<String, WordWithCount>() {
@@ -65,7 +65,7 @@ public class SocketWindowWordCount {
                     }
                 });
 
-        // print the results with a single thread, rather than in parallel
+        // 5. 打印结果
         windowCounts.print().setParallelism(1);
 
         env.execute("Socket Window WordCount");

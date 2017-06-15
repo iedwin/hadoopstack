@@ -9,15 +9,12 @@ import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.util.Collector;
 
 /**
- * Implements a streaming windowed version of the "WordCount" program.
  *
- * <p>This program connects to a server socket and reads strings from the socket.
- * The easiest way to try this out is to open a text server (at port 12345)
- * using the <i>netcat</i> tool via
- * <pre>
- * nc -l 12345
- * </pre>
- * and run this example with the hostname and the port as arguments.
+ * 一个简单的流处理DEMO
+ *
+ * run:
+ * nc -l 9009
+ * ./bin/flink run -c com.xiaoxiaomo.flink.streaming.socket.SocketWindowWordCount flink-streaming-1.0.0-jar-with-dependencies.jar --port 9009
  */
 @SuppressWarnings("serial")
 public class SocketWindowWordCount {

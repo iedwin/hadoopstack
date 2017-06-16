@@ -36,20 +36,16 @@ public class WordCount  {
 
         final ParameterTool params = ParameterTool.fromArgs(args);
 
-        // set up the execution environment
         final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
 
-        // make parameters available in the web interface
         env.getConfig().setGlobalJobParameters(params);
 
-        // get input data
         DataSet<String> text;
         if (params.has("input")) {
-            // read the text file from given input path
             text = env.readTextFile(params.get("input"));
         } else {
             // get default test text data
-            System.out.println("Executing WordCount example with default input data set.");
+            System.out.println("Executing WordCount example with default  data set.");
             System.out.println("Use --input to specify file input.");
             text = WordCountData.getDefaultTextLineDataSet(env);
         }
@@ -76,12 +72,6 @@ public class WordCount  {
     // *************************************************************************
     //     USER FUNCTIONS
     // *************************************************************************
-
-    /**
-     * Implements the string tokenizer that splits sentences into words as a user-defined
-     * FlatMapFunction. The function takes a line (String) and splits it into
-     * multiple pairs in the form of "(word,1)" ({@code Tuple2<String, Integer>}).
-     */
     public static final class Tokenizer implements FlatMapFunction<String, Tuple2<String, Integer>> {
 
         public void flatMap(String value, Collector<Tuple2<String, Integer>> out) {

@@ -34,7 +34,7 @@ object KafkaDataStream {
 
         //加载配置
         val prop: Properties = new Properties()
-        prop.load(this.getClass().getResourceAsStream("/develop/kafka.properties"))
+        prop.load(this.getClass().getResourceAsStream("/kafka.properties"))
 
         val groupName = prop.getProperty("group.id")
 

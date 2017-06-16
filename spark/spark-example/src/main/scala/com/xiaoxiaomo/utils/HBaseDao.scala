@@ -24,7 +24,7 @@ object HBaseDao extends Serializable {
 
     def createHBaseConn: Connection = {
         val conf: Configuration = HBaseConfiguration.create()
-        conf.addResource(this.getClass().getResource("/develop/hbase-site.xml"))
+        conf.addResource(this.getClass().getResource("/hbase-site.xml"))
         ConnectionFactory.createConnection(conf)
     }
 

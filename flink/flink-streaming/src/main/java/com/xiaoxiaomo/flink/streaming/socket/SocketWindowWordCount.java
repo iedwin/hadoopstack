@@ -9,22 +9,19 @@ import org.apache.flink.streaming.api.windowing.time.Time;
 import org.apache.flink.util.Collector;
 
 /**
- * Implements a streaming windowed version of the "WordCount" program.
  *
- * <p>This program connects to a server socket and reads strings from the socket.
- * The easiest way to try this out is to open a text server (at port 12345)
- * using the <i>netcat</i> tool via
- * <pre>
- * nc -l 12345
- * </pre>
- * and run this example with the hostname and the port as arguments.
+ * 一个简单的流处理DEMO
+ *
+ * run:
+ * nc -l 9009
+ * ./bin/flink run -c com.xiaoxiaomo.flink.streaming.socket.SocketWindowWordCount flink-streaming-1.0.0-jar-with-dependencies.jar --port 9009
  */
 @SuppressWarnings("serial")
 public class SocketWindowWordCount {
 
     public static void main(String[] args) throws Exception {
 
-        // the host and the port to connect to
+        // 1. 获取参数
         final String hostname;
         final int port;
         try {
@@ -40,13 +37,13 @@ public class SocketWindowWordCount {
             return;
         }
 
-        // get the execution environment
+        // 2. 获取streaming环境
         final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
-        // get input data by connecting to the socket
+        // 3. 获取socketTextStream
         DataStream<String> text = env.socketTextStream(hostname, port, "\n");
 
-        // parse the data, group it, window it, and aggregate the counts
+        // 4. 解析数据
         DataStream<WordWithCount> windowCounts = text
 
                 .flatMap(new FlatMapFunction<String, WordWithCount>() {
@@ -68,7 +65,7 @@ public class SocketWindowWordCount {
                     }
                 });
 
-        // print the results with a single thread, rather than in parallel
+        // 5. 打印结果
         windowCounts.print().setParallelism(1);
 
         env.execute("Socket Window WordCount");

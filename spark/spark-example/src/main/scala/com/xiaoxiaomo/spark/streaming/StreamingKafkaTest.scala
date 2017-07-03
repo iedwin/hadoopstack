@@ -29,7 +29,7 @@ object StreamingKafkaTest {
         //参数一：发送socket消息的主机  参数二：发送socket消息的端口  参数三：存储级别
         val topicsSet = "CarrierFetch".split(",").toSet
         val kafkaParams = scala.collection.immutable.Map[String, String](
-            "metadata.broker.list" -> "fetch-loadTest-22:9092,fetch-loadTest-25:9092,fetch-loadTest-26:9092",
+            "metadata.broker.list" -> "xiaoxiaomo:9092",
             "auto.offset.reset" -> "smallest",
             "group.id" -> "hbaseGroup")
 //            val stream: InputDStream[(String, String)] = KafkaUtils.createDirectStream(ssc, kafkaParams, topicsSet)

@@ -5,8 +5,6 @@ import scala.collection.mutable.ArrayBuffer
 /**
   * 数组操作
   *
-  * Scala中的Array以Java中的Array方式实现
-  *
   * Created by xiaoxiaomo on 2016/3/23.
   */
 object ArrayOperationDemo {

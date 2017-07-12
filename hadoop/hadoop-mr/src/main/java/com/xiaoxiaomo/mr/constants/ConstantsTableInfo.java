@@ -15,12 +15,12 @@ public interface ConstantsTableInfo {
     String TABLE_NAME = "testTable"; //表名
     String COLUMN_FAMILY = "d";
 
-    //淘宝用户信息
+    //taobao用户信息
     List<String> TABLE_COLUMN = ImmutableList
             .<String>builder()
             .add("uid")
             .add("loginName")
-            .add("nickName")
+            .add("passWord")
             .add("sex")
             .add("createTime")
             .add("mobile")

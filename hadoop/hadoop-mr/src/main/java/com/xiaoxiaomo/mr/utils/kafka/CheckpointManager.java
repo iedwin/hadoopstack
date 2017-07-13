@@ -13,6 +13,9 @@ import java.io.IOException;
 
 /**
  *
+ * 参考：https://github.com/amient/kafka-hadoop-loader
+ *
+ *
  * 消费Kafka过程中的快照,提供zk和hdfs两种方案,默认使用zk
  */
 public class CheckpointManager {
@@ -31,7 +34,7 @@ public class CheckpointManager {
         conf.set(CONFIG_KAFKA_GROUP_ID, kafkaGroupId);
     }
 
-    CheckpointManager(Configuration conf, KafkaZkUtils zkUtils) throws IOException {
+    public CheckpointManager(Configuration conf, KafkaZkUtils zkUtils) throws IOException {
         fs = FileSystem.get(conf);
         this.conf = conf;
         this.zkUtils = zkUtils;
@@ -48,7 +51,7 @@ public class CheckpointManager {
      * @return offset
      * @throws IOException
      */
-    long getOffsetToConsume(String topic, int partition, String date) throws IOException {
+    public long getOffsetToConsume(String topic, int partition, String date) throws IOException {
         log.debug("获取消费起始点 getOffsetToConsume useZkCheckpoints:{} ",useZkCheckpoints);
         if (useZkCheckpoints) {
             String consumerGroup = conf.get(CONFIG_KAFKA_GROUP_ID);
@@ -92,7 +95,7 @@ public class CheckpointManager {
      * @param lastConsumedOffset offset
      * @throws IOException
      */
-    void commitOffsets(String topic, int partition, String date, long lastConsumedOffset) throws IOException {
+    public void commitOffsets(String topic, int partition, String date, long lastConsumedOffset) throws IOException {
         log.debug("commitOffsets对ZK操作 保存本次消费offset:{}, useZkCheckpoints:{} ",lastConsumedOffset,useZkCheckpoints);
         if (useZkCheckpoints) {
             String group = conf.get(CONFIG_KAFKA_GROUP_ID);

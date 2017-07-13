@@ -1,5 +1,6 @@
-package com.xiaoxiaomo.mr.utils.kafka;
+package com.xiaoxiaomo.mr.utils.kafka.io;
 
+import com.xiaoxiaomo.mr.utils.kafka.KafkaMapper;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataOutputStream;
 import org.apache.hadoop.fs.FileSystem;
@@ -27,6 +28,9 @@ import java.util.TimeZone;
 import java.util.TreeMap;
 
 /**
+ *
+ * 参考：https://github.com/amient/kafka-hadoop-loader
+ *
  * 配合KafkaMapper将Kafka队列中的数据导入到HDFS
  */
 public class MultiOutputFormat extends FileOutputFormat<MsgMetadataWritable, BytesWritable> {

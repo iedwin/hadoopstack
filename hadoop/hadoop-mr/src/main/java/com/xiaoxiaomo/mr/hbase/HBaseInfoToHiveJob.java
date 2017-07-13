@@ -32,7 +32,9 @@ import java.util.*;
 import java.util.Map.Entry;
 
 /**
+ *
  * HBase数据按照dt分区(月)存入hive仓库
+ *
  * Created by xiaoxiaomo on 2017/6/1.
  */
 public class HBaseInfoToHiveJob extends Configured implements Tool {
@@ -48,7 +50,7 @@ public class HBaseInfoToHiveJob extends Configured implements Tool {
 		conf.set("hBaseTable", args[1]);
 
 		//2. job信息
-		Job job = Job.getInstance(conf,args[1] + " HBase2Hive" + DateUtil.getNowTime());
+		Job job = Job.getInstance(conf,args[1] + " HBaseInfoToHiveJob" + DateUtil.getNowTime());
 		job.setJarByClass(HBaseInfoToHiveJob.class);
 
 		//3. 组装scan
@@ -97,7 +99,7 @@ public class HBaseInfoToHiveJob extends Configured implements Tool {
 
 			hBaseTable = context.getConfiguration().get("hBaseTable")
 					.toLowerCase();
-			logger.info("当前map处理的表为" + hBaseTable);
+			logger.info("表" + hBaseTable);
 
 			if (hBaseTable.contains(ConstantsTableInfo.TABLE_NAME)) {
 				eventColumn = ConstantsTableInfo.TABLE_COLUMN;
@@ -139,8 +141,7 @@ public class HBaseInfoToHiveJob extends Configured implements Tool {
 			if (columnDate == null || columnDate.length() == 0) {
 				columnDate = "2014-01-01";
 			}else {
-				columnDate = columnDate.replace("年", "-").replace("月", "-")
-						.replace("日", "-");
+				columnDate = columnDate.replace("年", "-").replace("月", "-").replace("日", "-");
 			}
 			String dt = columnDate.split(" ")[0];
 			try {

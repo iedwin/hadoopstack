@@ -2,8 +2,8 @@ package com.xiaoxiaomo.mr;
 
 import com.xiaoxiaomo.utils.MD5;
 import com.xiaoxiaomo.mr.utils.kafka.CheckpointManager;
-import com.xiaoxiaomo.mr.utils.kafka.KafkaInputFormat;
-import com.xiaoxiaomo.mr.utils.kafka.MsgMetadataWritable;
+import com.xiaoxiaomo.mr.utils.kafka.io.KafkaInputFormat;
+import com.xiaoxiaomo.mr.utils.kafka.io.MsgMetadataWritable;
 import org.apache.commons.cli.*;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
@@ -160,31 +160,9 @@ class KafkaTOHive extends Configured implements Tool {
         options.addOption(OptionBuilder
                 .withLongOpt("topic")
                 .hasArg()
-                .withDescription("Required!Kafka etl topic name,e.g:CreditFetch")
+                .withDescription("Required!Kafka etl topic name")
                 .create("t"));
 
-        options.addOption(OptionBuilder
-                .withLongOpt("outPath")
-                .hasArg()
-                .withDescription("Required!Kafka etl job hdfs outPath,e.g:/user/hive/data/CreditFetch")
-                .create("p"));
-
-        options.addOption(OptionBuilder
-                .withLongOpt("offset")
-                .hasArg()
-                .withDescription("Reset all offsets to either 'earliest' or 'latest',default is 'checkpoint'")
-                .create("o"));
-
-        options.addOption(OptionBuilder
-                .withLongOpt("date")
-                .hasArg()
-                .withDescription("Required!Kafka etl date,e.g. 2014-03-04")
-                .create("d"));
-
-        options.addOption(OptionBuilder
-                .withLongOpt("help")
-                .withDescription("Show this help")
-                .create("h"));
 
         return options;
     }

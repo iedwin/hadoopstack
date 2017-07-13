@@ -1,4 +1,4 @@
-package com.xiaoxiaomo.mr.utils.kafka;
+package com.xiaoxiaomo.mr.utils.kafka.io;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.Writable;
@@ -9,6 +9,8 @@ import java.io.DataOutput;
 import java.io.IOException;
 
 /**
+ *
+ * 参考：https://github.com/amient/kafka-hadoop-loader
  *
  * Kafka读取分片,封装了kafka的broker/topic/partition,并以startOffset和endOffset判定消费范围
  */
@@ -31,6 +33,15 @@ public class KafkaInputSplit extends InputSplit implements Writable {
         this.partition = partition;
         this.startOffset = startOffset;
         this.endOffset = endOffset;
+    }
+
+    //Test
+    public KafkaInputSplit(int brokerId, String broker, String topic, int partition, long startOffset) {
+        this.brokerId = String.valueOf(brokerId);
+        this.broker = broker;
+        this.partition = partition;
+        this.topic = topic;
+        this.startOffset = startOffset;
     }
 
     public void readFields(DataInput in) throws IOException {

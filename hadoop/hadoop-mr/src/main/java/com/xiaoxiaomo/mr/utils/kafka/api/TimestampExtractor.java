@@ -1,12 +1,15 @@
-package com.xiaoxiaomo.mr.utils.kafka;
+package com.xiaoxiaomo.mr.utils.kafka.api;
 
+import com.xiaoxiaomo.mr.utils.kafka.io.MsgMetadataWritable;
 import org.apache.hadoop.io.BytesWritable;
 
 import java.io.IOException;
 
 /**
+ * 参考：https://github.com/amient/kafka-hadoop-loader
  *
  * 可选地,TimestampExtractor可提供配置使输出目录基于分区的时间格式
+ *
  */
 public interface TimestampExtractor {
 

@@ -19,9 +19,11 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ *
+ * 参考：https://github.com/amient/kafka-hadoop-loader
  * Des:读取zk的工具类,操作kafka在zk中的存储
  */
-class KafkaZkUtils implements Closeable {
+public class KafkaZkUtils implements Closeable {
 
     private static final Logger LOG = LoggerFactory.getLogger(KafkaZkUtils.class);
 
@@ -34,13 +36,13 @@ class KafkaZkUtils implements Closeable {
 
     public final ZkClient client;
 
-    KafkaZkUtils(String zkConnectString, int sessionTimeout, int connectTimeout) {
+    public KafkaZkUtils(String zkConnectString, int sessionTimeout, int connectTimeout) {
         client = new ZkClient(zkConnectString, sessionTimeout, connectTimeout, new StringSerializer());
         jsonMapper = new ObjectMapper(new JsonFactory());
         LOG.info("连接到 Zookeeper ......");
     }
 
-    String getBrokerName(int brokerId) {
+    public String getBrokerName(int brokerId) {
         String data = client.readData(BROKER_IDS_PATH + "/" + brokerId);
         Map<String, Object> map = parseJsonAsMap(data);
         return map.get("host") + ":" + map.get("port");
@@ -52,7 +54,7 @@ class KafkaZkUtils implements Closeable {
      * @param topic topic
      * @return topic各个寻找partitions leader 列表
      */
-    Map<Integer, Integer> getPartitionLeaders(String topic) {
+    public Map<Integer, Integer> getPartitionLeaders(String topic) {
         Map<Integer, Integer> partitionLeaders = new HashMap<>();
         List<String> partitions = getChildrenParentMayNotExist(BROKER_TOPICS_PATH + "/" + topic + "/" + PARTITIONS);
         for (String partition : partitions) {

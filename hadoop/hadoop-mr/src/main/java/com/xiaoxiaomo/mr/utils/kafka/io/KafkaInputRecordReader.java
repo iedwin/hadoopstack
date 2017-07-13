@@ -1,5 +1,7 @@
-package com.xiaoxiaomo.mr.utils.kafka;
+package com.xiaoxiaomo.mr.utils.kafka.io;
 
+import com.xiaoxiaomo.mr.utils.kafka.CheckpointManager;
+import com.xiaoxiaomo.mr.utils.kafka.KafkaZkUtils;
 import kafka.api.FetchRequest;
 import kafka.api.FetchRequestBuilder;
 import kafka.api.PartitionFetchInfo;
@@ -27,6 +29,8 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
+ *
+ * 参考：https://github.com/amient/kafka-hadoop-loader
  *
  * Des:Kafka记录读取器,使用iterator读取,全部读取后向zk提交
  */

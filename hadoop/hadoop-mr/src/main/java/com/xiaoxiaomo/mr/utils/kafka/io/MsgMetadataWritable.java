@@ -1,4 +1,4 @@
-package com.xiaoxiaomo.mr.utils.kafka;
+package com.xiaoxiaomo.mr.utils.kafka.io;
 
 import org.apache.hadoop.io.Writable;
 import org.apache.hadoop.io.WritableUtils;
@@ -8,6 +8,9 @@ import java.io.DataOutput;
 import java.io.IOException;
 
 /**
+ *
+ * 参考：https://github.com/amient/kafka-hadoop-loader
+ *
  * KafkaInputRecordReader key
  */
 public class MsgMetadataWritable implements Writable {

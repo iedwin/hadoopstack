@@ -15,7 +15,7 @@ public interface ConstantsTableInfo {
     String TABLE_NAME = "testTable"; //表名
     String COLUMN_FAMILY = "d";
 
-    //taobao用户信息
+    //tb用户信息
     List<String> TABLE_COLUMN = ImmutableList
             .<String>builder()
             .add("uid")
@@ -24,7 +24,6 @@ public interface ConstantsTableInfo {
             .add("sex")
             .add("createTime")
             .add("mobile")
-            .add("email")
             .add("updateTime")
             .build();
 
@@ -32,11 +31,9 @@ public interface ConstantsTableInfo {
     String CARRIER_SCHEMA = "message carrier {\n" +
             "required binary uid;\n" +
             "required binary mobile;\n" +
-            "required binary loginName;\n" +
-            "required binary nickName;\n" +
+            "required binary passWord;\n" +
             "required binary sex;\n" +
             "required binary createTime;\n" +
-            "required binary email;\n" +
             "required binary updateTime;\n" +
             "}";
 

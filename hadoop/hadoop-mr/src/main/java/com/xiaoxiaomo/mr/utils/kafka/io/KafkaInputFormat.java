@@ -1,5 +1,7 @@
-package com.xiaoxiaomo.mr.utils.kafka;
+package com.xiaoxiaomo.mr.utils.kafka.io;
 
+import com.xiaoxiaomo.mr.utils.kafka.CheckpointManager;
+import com.xiaoxiaomo.mr.utils.kafka.KafkaZkUtils;
 import com.xiaoxiaomo.utils.DateUtil;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.io.BytesWritable;
@@ -13,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 参考：https://github.com/amient/kafka-hadoop-loader
  *
  * 自定义KafkaInputFormat
  */

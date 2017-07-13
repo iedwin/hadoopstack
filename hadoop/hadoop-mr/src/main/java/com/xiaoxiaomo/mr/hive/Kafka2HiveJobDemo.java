@@ -4,8 +4,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.xiaoxiaomo.utils.MD5;
 import com.xiaoxiaomo.mr.constants.ConstantsTableInfo;
 import com.xiaoxiaomo.mr.utils.kafka.CheckpointManager;
-import com.xiaoxiaomo.mr.utils.kafka.KafkaInputFormat;
-import com.xiaoxiaomo.mr.utils.kafka.MsgMetadataWritable;
+import com.xiaoxiaomo.mr.utils.kafka.io.KafkaInputFormat;
+import com.xiaoxiaomo.mr.utils.kafka.io.MsgMetadataWritable;
 import org.apache.commons.cli.*;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
@@ -18,17 +18,11 @@ import org.apache.hadoop.mapred.JobConf;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import parquet.example.data.Group;
-import parquet.example.data.simple.SimpleGroupFactory;
-import parquet.hadoop.ParquetOutputFormat;
-import parquet.hadoop.example.GroupWriteSupport;
-import parquet.hadoop.metadata.CompressionCodecName;
-import parquet.hadoop.util.ContextUtil;
-import parquet.schema.MessageTypeParser;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -38,16 +32,15 @@ import java.util.Set;
 
 /**
  *
- * 从Kafka队列导出每日新增数据至HDFS，采用Parquet格式，按计划未来需要采用该格式代替传统Text格式
+ * 从Kafka中取数据
  *
- * 保存7天,每12小时清理一次.消费记录点通过zk保存
+ * topic保存7天, 每12小时清理一次
  *
  * Created by xiaoxiaomo on 2017/6/1.
  */
-public class KafkaToHiveParquetJob extends Configured implements Tool {
+public class Kafka2HiveJobDemo extends Configured implements Tool {
 
-    private static final Logger logger = LoggerFactory.getLogger(KafkaToHiveParquetJob.class);
-    private static String topic;
+    private static final Logger LOG = LoggerFactory.getLogger(Kafka2HiveJobDemo.class);
 
     @Override
     public int run(String[] args) throws Exception {
@@ -68,14 +61,17 @@ public class KafkaToHiveParquetJob extends Configured implements Tool {
             printHelpAndExit(options);
         }
 
-        //加载公共配置
+        //加载Kafka配置
         Properties props = new Properties();
-        props.load(KafkaToHiveParquetJob.class.getResourceAsStream("/kafka.properties"));
+        props.load(Kafka2HiveJobDemo.class.getResourceAsStream("/kafka.properties"));
+
+        //给Kafka设置消费者组和zk链接
         CheckpointManager.configureUseZooKeeper(conf, props.getProperty("consumerGroupId"));
         KafkaInputFormat.configureZkConnection(conf, props.getProperty("zk.connect"));
 
         //topic设置
-        topic = cmd.getOptionValue("topic");
+        final String topic = cmd.getOptionValue("topic");
+        conf.set("topic",topic);
         KafkaInputFormat.configureKafkaTopics(conf, topic);
         if (cmd.hasOption("o")) {
             KafkaInputFormat.configureAutoOffsetReset(conf, cmd.getOptionValue("offset"));
@@ -88,7 +84,7 @@ public class KafkaToHiveParquetJob extends Configured implements Tool {
             simpleDateFormat.parse(etlDate);
             conf.set(KafkaInputFormat.CONFIG_ETL_DATE, etlDate);
         } catch (Exception ex) {
-            logger.error("Invalid date:{},must be:yyyy-MM-dd", etlDate);
+            LOG.error("Invalid date:{},must be:yyyy-MM-dd", etlDate);
             printHelpAndExit(options);
         }
 
@@ -98,12 +94,13 @@ public class KafkaToHiveParquetJob extends Configured implements Tool {
 
         JobConf jobConf = new JobConf(conf);
         jobConf.setJarByClass(getClass());
-        Job job = Job.getInstance(jobConf, "CarrierETL");
+        Job job = Job.getInstance(jobConf, topic+"ETL");
         job.setInputFormatClass(KafkaInputFormat.class);
-        job.setOutputFormatClass(ParquetOutputFormat.class);
+        job.setOutputFormatClass(TextOutputFormat.class);
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(Text.class);
-
+        job.setOutputKeyClass(NullWritable.class);
+        job.setOutputValueClass(Text.class);
         job.setMapperClass(KafkaETLMapper.class);
         job.setReducerClass(KafkaETLReducer.class);
         job.setNumReduceTasks(5);
@@ -111,15 +108,10 @@ public class KafkaToHiveParquetJob extends Configured implements Tool {
         Path outputPath = new Path(hdfsPath);
         final FileSystem fileSystem = outputPath.getFileSystem(conf);
         fileSystem.delete(outputPath, true);
-        ParquetOutputFormat.setOutputPath(job, outputPath);
-        ParquetOutputFormat.setCompression(job, CompressionCodecName.SNAPPY);
-        ParquetOutputFormat.setWriteSupportClass(job, GroupWriteSupport.class);
-        GroupWriteSupport.setSchema(
-                MessageTypeParser.parseMessageType(ConstantsTableInfo.SCHEMA.get(topic)),
-                job.getConfiguration());
-
+        TextOutputFormat.setOutputPath(job, outputPath);
         return job.waitForCompletion(true) ? 0 : -1;
     }
+
 
     public static class KafkaETLMapper extends Mapper<MsgMetadataWritable, BytesWritable, Text, Text> {
         @Override
@@ -130,13 +122,7 @@ public class KafkaToHiveParquetJob extends Configured implements Tool {
         }
     }
 
-    public static class KafkaETLReducer extends Reducer<Text, Text, NullWritable, Group> {
-        private SimpleGroupFactory factory;
-
-        @Override
-        protected void setup(Context context) throws IOException, InterruptedException {
-            factory = new SimpleGroupFactory(GroupWriteSupport.getSchema(ContextUtil.getConfiguration(context)));
-        }
+    public static class KafkaETLReducer extends Reducer<Text, Text, NullWritable, Text> {
 
         @Override
         protected void reduce(Text key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
@@ -146,14 +132,16 @@ public class KafkaToHiveParquetJob extends Configured implements Tool {
                 records.add(value.toString());
             }
             for (String record : records) {
-
-                Group group = factory.newGroup();
-                JSONObject recordMap = JSONObject.parseObject(record) ;
-                for (Object k : recordMap.keySet()) {
-                    group.append(k.toString(),recordMap.get(k).toString());
-                }
-
-                context.write(null, group);
+            	try {
+                    StringBuilder line = new StringBuilder();
+                    JSONObject recordMap = JSONObject.parseObject(record) ;
+                    for (Object o : recordMap.values()) {
+                        line.append(o).append(ConstantsTableInfo.LINE_CHAR);
+                    }
+                    context.write(NullWritable.get(), new Text(line.substring(0, line.length() - 1)));
+				} catch (Exception e) {
+                    LOG.error("json数据格式有误：" + record);
+				}
             }
         }
     }
@@ -161,24 +149,24 @@ public class KafkaToHiveParquetJob extends Configured implements Tool {
 
     private void printHelpAndExit(Options options) {
         HelpFormatter formatter = new HelpFormatter();
-        formatter.printHelp("KafkaParquetETL", options);
+        formatter.printHelp("KafkaETL", options);
         System.exit(0);
     }
 
     @SuppressWarnings("static-access")
-    private Options buildOptions() {
+	private Options buildOptions() {
         Options options = new Options();
 
         options.addOption(OptionBuilder
                 .withLongOpt("topic")
                 .hasArg()
-                .withDescription("Required!Kafka etl topic name,e.g:CreditFetch")
+                .withDescription("Required!Kafka etl topic name")
                 .create("t"));
 
         options.addOption(OptionBuilder
                 .withLongOpt("outPath")
                 .hasArg()
-                .withDescription("Required!Kafka etl job hdfs outPath,e.g:/user/hive/data/CreditFetch")
+                .withDescription("Required!Kafka etl job hdfs outPath,e.g:/user/hive/data/TABLE")
                 .create("p"));
 
         options.addOption(OptionBuilder
@@ -190,19 +178,19 @@ public class KafkaToHiveParquetJob extends Configured implements Tool {
         options.addOption(OptionBuilder
                 .withLongOpt("date")
                 .hasArg()
-                .withDescription("Required!Kafka etl date,e.g. 2014-03-04")
+                .withDescription("Required!Kafka etl date,e.g. 2016-08-01")
                 .create("d"));
 
         options.addOption(OptionBuilder
                 .withLongOpt("help")
-                .withDescription("Show this help")
+                .withDescription("显示帮助")
                 .create("h"));
 
         return options;
     }
 
     public static void main(String[] args) throws Exception {
-        int exitCode = ToolRunner.run(new KafkaToHiveParquetJob(), args);
+        int exitCode = ToolRunner.run(new Kafka2HiveJobDemo(), args);
         System.exit(exitCode);
     }
 }

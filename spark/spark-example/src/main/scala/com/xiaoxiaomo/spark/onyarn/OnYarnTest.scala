@@ -1,11 +1,12 @@
 package com.xiaoxiaomo.spark.onyarn
 
-import org.apache.spark.SparkContext
+import org.apache.spark.rdd.RDD
+import org.apache.spark.{SparkConf, SparkContext}
 
 /**
   *
   * 提交任务命令
-  * /opt/cloudera/parcels/CDH/bin/spark-submit --class com.xxo.spark.onyarn.OnYarnTest --master yarn-client /home/txd/spark_scala-1.0-SNAPSHOT.jar /data/test.txt /data/tmp
+  * /opt/cloudera/parcels/CDH/bin/spark-submit --class com.xiaoxiaomo.spark.onyarn.OnYarnTest --master yarn-client spark-example-1.0.0.jar /data/test.txt /data/tmp
   *
   * 代码开发流程
   * 1. 构造sc对象  val sc = new SparkContext
@@ -20,25 +21,32 @@ import org.apache.spark.SparkContext
   */
 object OnYarnTest {
   def main(args: Array[String]) {
-    
-    if(args.length != 2){
+
+    if(args.length < 2){
       println("Usage: <inputPath> <outputPath>")
       System.exit(1)
     }
-    
+
     //1. 构造spark上下文对象
-    val sc = new SparkContext
-    
+    val conf: SparkConf = new SparkConf()
+    conf.setAppName( "OnYarnTest")
+    conf.setMaster("yarn-client")
+
+    val sc = new SparkContext(conf)
+
     //2. 加载数据
     val file = sc.textFile(args(0))
-    
+
     //3. 计算逻辑
     val data = file.flatMap(_.split(" ")).map((_,1)).reduceByKey(_ + _)
-    
-    data.cache
-    
+
+    val cache: RDD[(String, Int)] = data.cache
+
+
+
     //4. 保存数据
     data.repartition(1).saveAsTextFile(args(1))
-    
+    Thread.sleep(args(2).toInt)
+
   }
 }

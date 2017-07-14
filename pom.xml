@@ -65,7 +65,7 @@
         <zkclient.version>0.9</zkclient.version>
         <solr.version>4.10.3</solr.version>
         <flink.version>1.2.1</flink.version>
-        <beam.version>2.0.0</beam.version>
+        <beam.version>0.6.0</beam.version>
 
         <spring.vesion>3.2.0.RELEASE</spring.vesion>
         <hibernate.version>3.6.10.Final</hibernate.version>

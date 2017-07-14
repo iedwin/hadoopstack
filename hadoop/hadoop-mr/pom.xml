@@ -107,12 +107,12 @@
 
     </dependencies>
 
-    <repositories>
-        <repository>
-            <id>conjars-repo</id>
-            <name>conjars Maven Repository</name>
-            <url>http://conjars.org/repo</url>
-        </repository>
-    </repositories>
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>conjars-repo</id>-->
+            <!--<name>conjars Maven Repository</name>-->
+            <!--<url>http://conjars.org/repo</url>-->
+        <!--</repository>-->
+    <!--</repositories>-->
 
 </project>

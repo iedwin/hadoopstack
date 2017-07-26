@@ -111,16 +111,16 @@ object KafkaDataStream {
 
                 logger.debug(s"${offsetRange.topic} ${offsetRange.partition} ${offsetRange.fromOffset} ${offsetRange.untilOffset}")
 
+                /** 解析PartitionRecords数据 */
+                if (offsetRange.topic != null) {
+                    HBaseDao.insert(offsetRange.topic, partitionRecords)
+                }
+
                 //TopicAndPartition 主构造参数第一个是topic，第二个是Kafka partition id
                 val topicAndPartition = TopicAndPartition(offsetRange.topic, offsetRange.partition)
                 val either = kc.setConsumerOffsets(groupName, Map((topicAndPartition, offsetRange.untilOffset))) //是
                 if (either.isLeft) {
                     logger.info(s"Error updating the offset to Kafka cluster: ${either.left.get}")
-                }
-
-                /** 解析PartitionRecords数据 */
-                if (offsetRange.topic != null) {
-                    HBaseDao.insert(offsetRange.topic, partitionRecords)
                 }
             })
         })

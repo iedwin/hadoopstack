@@ -9,7 +9,8 @@ import java.util.concurrent.TimeUnit;
 
 /**
  *
- * Meters会将最近1分钟，5分钟，15分钟的TPS（每秒处理的request数）给打印出来，还有所有时间的TPS。
+ * Meter用来计算事件的速率。 例如 request per second。 还可以提供1分钟，5分钟，15分钟不断更新的平均速率。
+ * （每秒处理的request数）给打印出来，还有所有时间的TPS。
  *
  * Created by xiaoxiaomo on 2017/7/25.
  */

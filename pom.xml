@@ -111,6 +111,7 @@
         <log4j.version>1.2.16</log4j.version>
         <junit.version>4.12</junit.version>
         <mrunit.version>1.0.0</mrunit.version>
+        <metrics.version>3.2.3</metrics.version>
     </properties>
 
     <dependencies>

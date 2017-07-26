@@ -27,7 +27,7 @@ import java.io.IOException;
  *  4. 延时日志刷写：WAL保存到磁盘的两种方式，是否延时。isDeferredLogFlush()、setDeferredLogFlush()
  *
  *
- * Created by TangXD on 2017/5/15.
+ * Created by xiaoxiaomo on 2017/5/15.
  */
 public class TableInfoExample {
 

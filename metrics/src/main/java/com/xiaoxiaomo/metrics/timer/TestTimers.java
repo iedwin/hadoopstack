@@ -12,7 +12,7 @@ import java.util.concurrent.TimeUnit;
  *
  * 时间统计
  *
- * Created by TangXD on 2017/7/25.
+ * Created by xiaoxiaomo on 2017/7/25.
  */
 public class TestTimers {
 

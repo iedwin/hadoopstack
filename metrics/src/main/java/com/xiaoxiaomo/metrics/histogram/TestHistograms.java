@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
  * Histograms 直方图
  * 最大值，最小值，平均值，方差，中位值，百分比数据，如75%,90%,98%,99%的数据在哪个范围内
  *
- * Created by TangXD on 2017/7/25.
+ * Created by xiaoxiaomo on 2017/7/25.
  */
 public class TestHistograms {
 

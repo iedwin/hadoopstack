@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * 通过BulkLoad 从原表中导入 索引
  * 适合初次导入数据
- * Created by TangXD on 2016/9/28.
+ * Created by xiaoxiaomo on 2016/9/28.
  */
 public class BulkLoadHBase2HBaseSecIndexJob extends Configured implements Tool {
     private static final Logger LOG = LoggerFactory.getLogger(BulkLoadHBase2HBaseSecIndexJob.class);

@@ -9,7 +9,7 @@ import org.apache.spark.streaming.StreamingContext._
   * nc -lk 9999
   *
   * /opt/cloudera/parcels/CDH/bin/spark-submit --class com.xxo.spark.streaming.StreamingSocketText original-spark_scala-1.0-SNAPSHOT.jar localhost 9999
-  * Created by TangXD on 2017/4/24.
+  * Created by xiaoxiaomo on 2017/4/24.
   */
 object StreamingSocketText {
 

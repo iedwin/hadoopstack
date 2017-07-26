@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Properties;
 /**
- * Created by TangXD on 2017/5/25.
+ * Created by xiaoxiaomo on 2017/5/25.
  */
 public class QueryKylin {
 

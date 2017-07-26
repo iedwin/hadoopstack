@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
  *
  * Meters会将最近1分钟，5分钟，15分钟的TPS（每秒处理的request数）给打印出来，还有所有时间的TPS。
  *
- * Created by TangXD on 2017/7/25.
+ * Created by xiaoxiaomo on 2017/7/25.
  */
 public class TestMeters {
 

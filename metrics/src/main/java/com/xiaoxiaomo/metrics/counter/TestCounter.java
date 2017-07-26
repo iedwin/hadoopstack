@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
  *
  * 计数器
  *
- * Created by TangXD on 2017/7/25.
+ * Created by xiaoxiaomo on 2017/7/25.
  */
 public class TestCounter {
 

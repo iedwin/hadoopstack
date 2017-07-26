@@ -5,7 +5,7 @@ package com.xiaoxiaomo.spark.demo.ch02
 //http://www.scala-lang.org/api/2.11.7/index.html#scala.io.StdIn$
 
 /**
- * Created by Jason on 2016/3/22.
+ * Created by xiaoxiaomo 2016/3/22.
  */
 object PrintDemo {
 

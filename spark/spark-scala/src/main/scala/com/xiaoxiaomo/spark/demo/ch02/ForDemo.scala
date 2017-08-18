@@ -1,7 +1,7 @@
 package com.xiaoxiaomo.spark.demo.ch02
 
 /**
- * Created by Jason on 2016/3/22.
+ * Created by xiaoxiaomo 2016/3/22.
  */
 object ForDemo {
 

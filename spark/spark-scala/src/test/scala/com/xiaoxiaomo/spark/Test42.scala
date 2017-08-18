@@ -1,7 +1,7 @@
 package com.xiaoxiaomo.spark
 
 /**
-  * Created by TangXD on 2016/11/16.
+  * Created by xiaoxiaomo on 2016/11/16.
   */
 object Test42 {
   def main(args: Array[String]): Unit = {

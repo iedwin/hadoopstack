@@ -14,7 +14,7 @@ import scala.util.Try
 /**
   * HBase 数据库操作
   *
-  * Created by TangXD on 2017/4/20.
+  * Created by xiaoxiaomo on 2017/4/20.
   */
 object HBaseDao extends Serializable {
 

@@ -16,7 +16,7 @@ import java.io.IOException;
 
 /**
  * 通过BulkLoad 加载HFile文件到HBase
- * Created by TangXD on 2016/9/29.
+ * Created by xiaoxiaomo on 2016/9/29.
  */
 public class HFileLoader {
     private static final Logger LOG = LoggerFactory.getLogger(HFileLoader.class);

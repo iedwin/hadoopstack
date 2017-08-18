@@ -13,7 +13,7 @@ import org.apache.spark.{SparkConf, SparkContext}
   * Reduce：
   *   1. 单词归类合并
   *
-  * Created by TangXD on 2016/11/18.
+  * Created by xiaoxiaomo on 2016/11/18.
   */
 object HelloWord {
 

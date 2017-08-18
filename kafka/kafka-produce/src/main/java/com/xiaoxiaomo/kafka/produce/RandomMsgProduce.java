@@ -8,7 +8,7 @@ import java.util.Properties;
 import java.util.Random;
 
 /**
- * Created by TangXD on 2017/2/15.
+ * Created by xiaoxiaomo on 2017/2/15.
  */
 public class RandomMsgProduce {
 

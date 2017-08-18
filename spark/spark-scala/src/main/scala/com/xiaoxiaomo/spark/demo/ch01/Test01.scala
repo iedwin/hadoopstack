@@ -4,7 +4,7 @@ package com.xiaoxiaomo.spark.demo.ch01
   * 方法的调用：
   *     1. 有返回值的方法，返回最后一行
   *     2. 无返回值的方法
-  * Created by Jason on 2016/3/21.
+  * Created by xiaoxiaomo 2016/3/21.
   */
 object Test01 {
 

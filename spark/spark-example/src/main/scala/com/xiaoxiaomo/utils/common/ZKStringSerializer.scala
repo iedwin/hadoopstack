@@ -5,7 +5,7 @@ import org.I0Itec.zkclient.exception.ZkMarshallingError
 import org.I0Itec.zkclient.serialize.ZkSerializer
 
 /**
-  * Created by TangXD on 2017/4/25.
+  * Created by xiaoxiaomo on 2017/4/25.
   */
 object ZKStringSerializer extends ZkSerializer {
 

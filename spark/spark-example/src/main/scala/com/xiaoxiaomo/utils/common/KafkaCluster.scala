@@ -24,7 +24,7 @@ import scala.util.control.NonFatal
   *   NOT zookeeper servers, specified in host1:port1,host2:port2 form
   *
   *   该类源码设置为private了，复制代码后修改
-  *   Created by TangXD on 2017/4/24.
+  *   Created by xiaoxiaomo on 2017/4/24.
   */
 @DeveloperApi
 class KafkaCluster(val kafkaParams: Map[String, String]) extends Serializable {

@@ -2,7 +2,7 @@ package com.xiaoxiaomo.spark.demo.ch01
 
 /**
   * 调用犯方法
-  * Created by Jason on 2016/3/22.
+  * Created by xiaoxiaomo 2016/3/22.
   */
 object Test02 {
 

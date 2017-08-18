@@ -10,7 +10,7 @@ import scala.util.Random
   * 3. 方法的调用
   * 4. apply 方法
   *
-  * Created by Jason on 2016/3/23.
+  * Created by xiaoxiaomo 2016/3/23.
   */
 object scala01 {
 

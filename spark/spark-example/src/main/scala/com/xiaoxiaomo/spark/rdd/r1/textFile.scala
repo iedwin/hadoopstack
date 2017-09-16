@@ -1,4 +1,4 @@
-package com.xiaoxiaomo.spark.rdd
+package com.xiaoxiaomo.spark.rdd.r1
 
 import org.apache.spark.{SparkConf, SparkContext}
 
@@ -7,7 +7,7 @@ import org.apache.spark.{SparkConf, SparkContext}
   *
   * Created by TangXD on 2017/9/16.
   */
-object makeRDD {
+object textFile {
 
     def main(args: Array[String]): Unit = {
         val conf = new SparkConf()
@@ -16,9 +16,12 @@ object makeRDD {
         val sc = new SparkContext(conf)
 
 
-        val rdd = sc.makeRDD(List("xiaoxiaomo", "blog"))    //其实内部就是调用的parallelize
+        val rdd = sc.textFile("/test/rdd_testfile_1")
 
         println(rdd)
+
+
+
     }
 
 }

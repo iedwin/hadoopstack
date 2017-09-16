@@ -1,26 +1,25 @@
-package com.xiaoxiaomo.spark.rdd
+package com.xiaoxiaomo.spark.rdd.r1
 
 import org.apache.spark.{SparkConf, SparkContext}
 
 /**
   *
+  * blog : http://blog.csdn.net/t1dmzks/article/details/70189509
   *
   * Created by TangXD on 2017/9/16.
   */
-object textFile {
+object parallelize {
 
     def main(args: Array[String]): Unit = {
+
         val conf = new SparkConf()
         conf.setAppName("parallelize rdd")
         conf.setMaster("local")
         val sc = new SparkContext(conf)
 
-
-        val rdd = sc.textFile("/test/rdd_testfile_1")
+        val rdd = sc.parallelize(List("xiaoxiaomo", "blog"))
 
         println(rdd)
-
-
 
     }
 

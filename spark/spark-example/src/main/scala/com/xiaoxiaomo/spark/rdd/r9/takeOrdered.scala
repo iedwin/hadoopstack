@@ -26,12 +26,10 @@ object takeOrdered {
 
 //        (1,2)
 //        (2,3)
-//        ()
 //        1
 //        2
-//        ()
-        println(rdd1.takeOrdered(2).foreach(x=>println(x)))
-        println(rdd2.takeOrdered(2).foreach(x=>println(x)))
+        rdd1.takeOrdered(2).foreach(x=>println(x))
+        rdd2.takeOrdered(2).foreach(x=>println(x))
 
 
     }

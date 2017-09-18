@@ -22,14 +22,12 @@ object top {
 
 //        (2,6)
 //        (2,3)
-//        ()
 //        2
 //        3
 //        3
-//        ()
-        println(rdd1.top(2).foreach(x=>println(x)))
+        rdd1.top(2).foreach(x=>println(x))
         println(rdd2.getNumPartitions)
-        println(rdd2.top(2).foreach(x=>println(x)))
+        rdd2.top(2).foreach(x=>println(x))
 
 
     }

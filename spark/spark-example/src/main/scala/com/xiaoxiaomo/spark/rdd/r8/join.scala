@@ -4,15 +4,13 @@ import org.apache.spark.{SparkConf, SparkContext}
 
 /**
   *
+  * rdd.join(otherRDD) 针对(k,v)类型的RDD
   *
-  * rdd.subtractByKey(otherRDD) 针对(k,v)类型的RDD
+  * 把rdd,otherRDD中的相同的key给连接起来，类似于sql中的join操作
   *
-  * 如果rdd key在otherRDD中存在，则删掉
-  *
-  *
-  * Created by jason on 17-9-17.
+  * Created by TangXD on 2017/9/18.
   */
-object subtractByKey {
+object join {
 
     def main(args: Array[String]): Unit = {
         val conf = new SparkConf()
@@ -24,8 +22,9 @@ object subtractByKey {
         val rdd1 = sc.makeRDD(Array((1,2),(2,3),(2,6)))
         val rdd2 = sc.makeRDD(Array((5,2),(2,9)))
 
-        val rdd = rdd1.subtractByKey(rdd2)
+        val rdd = rdd1.join(rdd2)
 
+        // List((2,(3,9)), (2,(6,9)))
         println(rdd.collect().toList)
 
     }

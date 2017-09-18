@@ -5,18 +5,16 @@ import org.apache.spark.{SparkConf, SparkContext}
 /**
   *
   *
-  * rdd.subtractByKey(otherRDD) 针对(k,v)类型的RDD
+  * rightOuterJoin
   *
-  * 如果rdd key在otherRDD中存在，则删掉
+  * 对两个 RDD 进行连接操作，类似于sql中的右外连接，存在的话，value用的Some, 不存在用的None,
   *
-  *
-  * Created by jason on 17-9-17.
+  * Created by TangXD on 2017/9/18.
   */
-object subtractByKey {
-
+object rightOuterJoin {
     def main(args: Array[String]): Unit = {
         val conf = new SparkConf()
-        conf.setAppName("subtract rdd")
+        conf.setAppName("rdd")
         conf.setMaster("local")
         val sc = new SparkContext(conf)
 
@@ -24,10 +22,10 @@ object subtractByKey {
         val rdd1 = sc.makeRDD(Array((1,2),(2,3),(2,6)))
         val rdd2 = sc.makeRDD(Array((5,2),(2,9)))
 
-        val rdd = rdd1.subtractByKey(rdd2)
+        // List((5,(None,2)), (2,(Some(3),9)), (2,(Some(6),9)))
+        val rdd = rdd1.rightOuterJoin(rdd2)
 
         println(rdd.collect().toList)
 
     }
-
 }

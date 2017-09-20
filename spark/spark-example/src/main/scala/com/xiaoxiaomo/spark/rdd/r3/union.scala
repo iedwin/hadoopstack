@@ -23,7 +23,7 @@ object union {
         val RDD1 = sc.parallelize(List("aa","aa","bb","cc","dd"))
         val RDD2 = sc.parallelize(List("aa","dd","ff"))
 
-
+        // List(aa, aa, bb, cc, dd, aa, dd, ff)
         println( RDD1.union(RDD2).collect().toList )
 
     }

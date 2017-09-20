@@ -42,5 +42,4 @@ object saveAsNewAPIHadoopDataset {
         sc.stop()
     }
 
-    }
 }

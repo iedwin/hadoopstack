@@ -6,7 +6,7 @@
 
     <groupId>com.xiaoxiaomo</groupId>
     <artifactId>hadoopstack</artifactId>
-    <version>${hadoop-stack.version}</version>
+    <version>1.0.0</version>
     <name>hadoopstack</name>
     <packaging>pom</packaging>
 
@@ -23,6 +23,7 @@
         <module>flink</module>
         <module>beam</module>
         <module>metrics</module>
+        <module>cassandra</module>
     </modules>
 
     <build>

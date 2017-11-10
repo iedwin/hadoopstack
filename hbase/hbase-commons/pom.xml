@@ -3,7 +3,7 @@
     <parent>
         <artifactId>hbase</artifactId>
         <groupId>com.xiaoxiaomo</groupId>
-        <version>${hadoop-stack.version}</version>
+        <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 

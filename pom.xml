@@ -6,7 +6,7 @@
 
     <groupId>com.xiaoxiaomo</groupId>
     <artifactId>hadoopstack</artifactId>
-    <version>${hadoop-stack.version}</version>
+    <version>1.0.0</version>
     <name>hadoopstack</name>
     <packaging>pom</packaging>
 
@@ -23,6 +23,7 @@
         <module>flink</module>
         <module>beam</module>
         <module>metrics</module>
+        <module>cassandra</module>
     </modules>
 
     <build>
@@ -56,9 +57,9 @@
         <spark-tags.version>2.0.0</spark-tags.version>
         <parquet.version>1.7.0</parquet.version>
 
-        <scala.binary.version>2.10</scala.binary.version>
+        <scala.binary.version>2.11</scala.binary.version>
 
-        <kafka.version>0.9.0.0</kafka.version>
+        <kafka.version>0.11.0.0</kafka.version>
         <flume.version>1.6.0</flume.version>
         <storm.version>0.9.3</storm.version>
         <kylin.version>2.0.0</kylin.version>

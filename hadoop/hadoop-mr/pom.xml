@@ -3,7 +3,7 @@
     <parent>
         <artifactId>hadoop</artifactId>
         <groupId>com.xiaoxiaomo</groupId>
-        <version>${hadoop-stack.version}</version>
+        <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -78,7 +78,7 @@
         <dependency>
             <groupId>com.xiaoxiaomo</groupId>
             <artifactId>common</artifactId>
-            <version>${hadoop-stack.version}</version>
+            <version>1.0.0</version>
         </dependency>
 
         <!-- fastjson -->

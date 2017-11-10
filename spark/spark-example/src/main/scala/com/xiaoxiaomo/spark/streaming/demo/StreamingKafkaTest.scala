@@ -1,8 +1,6 @@
-package com.xiaoxiaomo.spark.streaming
+package com.xiaoxiaomo.spark.streaming.demo
 
 import org.apache.spark.SparkConf
-import org.apache.spark.streaming.dstream.InputDStream
-import org.apache.spark.streaming.kafka.KafkaUtils
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 
 /**

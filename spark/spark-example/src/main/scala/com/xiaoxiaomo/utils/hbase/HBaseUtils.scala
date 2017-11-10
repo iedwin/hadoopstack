@@ -1,7 +1,6 @@
-package com.xiaoxiaomo.utils
+package com.xiaoxiaomo.utils.hbase
 
 import java.util
-import java.util.Properties
 
 import com.alibaba.fastjson.{JSON, JSONArray, JSONObject}
 import org.apache.hadoop.conf.Configuration
@@ -14,23 +13,21 @@ import scala.util.Try
 /**
   * HBase 数据库操作
   *
-  * Created by xiaoxiaomo on 2017/4/20.
+  * Created by xiaoxiaomo on 2016/4/20.
   */
-object HBaseDao extends Serializable {
+object HBaseUtils extends Serializable {
 
-    @transient lazy val logger = LogManager.getLogger(HBaseDao.getClass)
+    @transient lazy val LOG = LogManager.getLogger(HBaseUtils.getClass)
 
-    private val connection: Connection = createHBaseConn
+    private val connection: Connection = createHBaseConnection
 
-    def createHBaseConn: Connection = {
+    def createHBaseConnection: Connection = {
         val conf: Configuration = HBaseConfiguration.create()
         conf.addResource(this.getClass().getResource("/hbase-site.xml"))
         ConnectionFactory.createConnection(conf)
     }
 
     /**
-      * 获取表
-      *
       * @param tableName
       * @return
       */
@@ -39,33 +36,13 @@ object HBaseDao extends Serializable {
         table.asInstanceOf[HTable]
     }
 
-    /**
-      *
-      * 插入数据到 HBase
-      *
-      * 参数( tableName , [( tableName , json )] )：
-      * Json格式：
-      *     {
-      *         "r": "00000-0",
-      *         "f": "d",
-      *         "q": [
-      *             "customerId"
-      *          ],
-      *         "v": [
-      *                 "0"
-      *          ],
-      *         "t": "1494558616338"
-      *     }
-      *
-      * @return
-      */
     def insert(tableName: String, array: Iterator[(String, String)]): Boolean = {
 
         try {
-            val t: HTable = getTable(tableName) //HTable
+            val t: HTable = getTable(tableName)
             val puts: util.ArrayList[Put] = new util.ArrayList[Put]()
 
-            /** 遍历Json数组 */
+            // 遍历Json数组
             array.foreach(json => {
 
                 val jsonObj: JSONObject = JSON.parseObject(json._2)
@@ -87,10 +64,9 @@ object HBaseDao extends Serializable {
         } catch {
             case e: Exception =>
                 e.printStackTrace()
-                logger.error(s"insert ${tableName} error ", e)
+                LOG.error(s"insert ${tableName} error ", e)
                 false
         }
     }
-
 
 }

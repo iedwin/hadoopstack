@@ -1,8 +1,7 @@
-package com.xiaoxiaomo.spark.streaming
+package com.xiaoxiaomo.spark.streaming.demo
 
 import org.apache.spark.SparkConf
 import org.apache.spark.storage.StorageLevel
-import org.apache.spark.streaming.StreamingContext._
 import org.apache.spark.streaming.dstream.{DStream, ReceiverInputDStream}
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 

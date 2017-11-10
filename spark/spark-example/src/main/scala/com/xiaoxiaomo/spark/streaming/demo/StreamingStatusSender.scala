@@ -1,4 +1,4 @@
-package com.xiaoxiaomo.spark.streaming
+package com.xiaoxiaomo.spark.streaming.demo
 
 import java.io.PrintWriter
 import java.net.ServerSocket

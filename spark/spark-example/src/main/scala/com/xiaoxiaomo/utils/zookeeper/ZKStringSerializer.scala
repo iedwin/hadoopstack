@@ -1,11 +1,11 @@
-package com.xiaoxiaomo.utils.common
+package com.xiaoxiaomo.utils.zookeeper
 
 import kafka.utils.{immutable => _}
 import org.I0Itec.zkclient.exception.ZkMarshallingError
 import org.I0Itec.zkclient.serialize.ZkSerializer
 
 /**
-  * Created by xiaoxiaomo on 2017/4/25.
+  * Created by xiaoxiaomo on 2016/4/25.
   */
 object ZKStringSerializer extends ZkSerializer {
 

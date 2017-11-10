@@ -1,8 +1,7 @@
-package com.xiaoxiaomo.spark.streaming
+package com.xiaoxiaomo.spark.streaming.demo
 
 import org.apache.spark._
 import org.apache.spark.streaming._
-import org.apache.spark.streaming.StreamingContext._
 
 /**
   *

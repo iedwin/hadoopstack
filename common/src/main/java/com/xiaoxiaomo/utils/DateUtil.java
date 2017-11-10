@@ -120,7 +120,24 @@ public class DateUtil {
         return simpleDateFormat.format(date);
     }
 
+    public static String getDaysBefore(String day, String format) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(format);
+        Date date;
+        try {
+            date = simpleDateFormat.parse(day);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return "format mismatching";
+        }
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(date.getTime());
+        calendar.add(calendar.DATE, -1);
+        date = calendar.getTime();
+        return simpleDateFormat.format(date);
+    }
+
     public static void main(String[] args) {
             System.out.println(getTomorrow("2016-2-28","yyyy-MM-dd"));
+            System.out.println(getDaysBefore("2016-2-28","yyyy-MM-dd"));
     }
 }

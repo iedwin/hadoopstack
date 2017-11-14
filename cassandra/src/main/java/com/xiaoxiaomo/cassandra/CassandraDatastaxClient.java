@@ -35,9 +35,9 @@ import com.datastax.driver.core.Session;
  *
  * @see <a href="http://datastax.github.io/java-driver/manual/">Java driver online manual</a>
  */
-public class CassandraUsageDemo {
+public class CassandraDatastaxClient {
 
-    static String[] CONTACT_POINTS = {"127.0.0.1"};
+    static String[] CONTACT_POINTS = {"128.0.0.1"};
     static int PORT = 9042;
 
 
@@ -46,7 +46,7 @@ public class CassandraUsageDemo {
 
     public static void main(String[] args) {
 
-        CassandraUsageDemo client = new CassandraUsageDemo();
+        CassandraDatastaxClient client = new CassandraDatastaxClient();
 
         try {
 

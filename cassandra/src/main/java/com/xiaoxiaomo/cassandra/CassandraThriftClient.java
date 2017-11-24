@@ -18,7 +18,7 @@ public class CassandraThriftClient {
      * 对cassandra数据库的基础操作
      * */
 
-    private static String host = "127.0.0.1";
+    private static String host = "10.141.5.27";
     private static int port = 9160;
     private static String keyspace = "testspace";
     //暴露client供外界批量插入数据
@@ -92,7 +92,7 @@ public class CassandraThriftClient {
     }
 
     //插入一个column(for standard column family)
-    public void insertColumn(String columnFamily, String key, String columnName, String columnValue) throws UnsupportedEncodingException{
+    public static void insertColumn(String columnFamily, String key, String columnName, String columnValue) throws UnsupportedEncodingException{
         openConnection();
         ColumnParent parent = new ColumnParent(columnFamily);
         if( client != null ) {
@@ -118,7 +118,7 @@ public class CassandraThriftClient {
     /*获取key对应的column集合(for standard column family)
      * @return column的map集合
      * */
-    public HashMap<String, String> getColumns(String columnFamily, String key) throws InvalidRequestException, UnavailableException, TimedOutException, UnsupportedEncodingException, TException{
+    public static HashMap<String, String> getColumns(String columnFamily, String key) throws InvalidRequestException, UnavailableException, TimedOutException, UnsupportedEncodingException, TException{
         openConnection();
         ColumnParent parent = new ColumnParent(columnFamily);
         if( client != null ) {

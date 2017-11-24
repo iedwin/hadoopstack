@@ -37,7 +37,7 @@ import com.datastax.driver.core.Session;
  */
 public class CassandraDatastaxClient {
 
-    static String[] CONTACT_POINTS = {"128.0.0.1"};
+    static String[] CONTACT_POINTS = {"10.141.5.26","10.141.5.27"};
     static int PORT = 9042;
 
 
@@ -77,7 +77,7 @@ public class CassandraDatastaxClient {
 
         cluster = Cluster.builder()
                 .addContactPoints(contactPoints).withPort(port)
-                .withCredentials("cassandra", "cassandra").build();
+                .withCredentials("xiaoxiaomo", "blog").build();
 
         System.out.printf("Connected to cluster: %s%n", cluster.getMetadata().getClusterName());
 

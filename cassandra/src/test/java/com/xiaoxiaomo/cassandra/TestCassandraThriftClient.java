@@ -34,7 +34,7 @@ public class TestCassandraThriftClient {
     @Test
     public void testInsertSuperColumn() throws Exception{
 
-//        CassandraThriftClient.insertSuperColumn();
+        CassandraThriftClient.insertColumn("test1","2","name","xiaoxiaomo");
     }
 
 

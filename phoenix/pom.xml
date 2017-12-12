@@ -7,10 +7,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cassandra</artifactId>
+    <artifactId>phoenix</artifactId>
     <packaging>jar</packaging>
 
-    <name>cassandra</name>
+    <name>phoenix</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -18,19 +18,12 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.datastax.cassandra</groupId>
-            <artifactId>cassandra-driver-core</artifactId>
-            <version>3.3.1</version>
-        </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.cassandra/cassandra-thrift -->
         <dependency>
-            <groupId>org.apache.cassandra</groupId>
-            <artifactId>cassandra-thrift</artifactId>
-            <version>3.11.1</version>
+            <groupId>org.apache.phoenix</groupId>
+            <artifactId>phoenix-core</artifactId>
+            <version>4.5.0-HBase-0.98</version>
         </dependency>
-
 
     </dependencies>
 </project>

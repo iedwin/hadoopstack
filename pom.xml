@@ -24,6 +24,7 @@
         <module>beam</module>
         <module>metrics</module>
         <module>cassandra</module>
+        <module>phoenix</module>
     </modules>
 
     <build>

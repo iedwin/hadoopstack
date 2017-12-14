@@ -1,6 +1,6 @@
 package com.xiaoxiaomo.hbase;
 
-import com.xiaoxiaomo.utils.DateUtil;
+import com.xiaoxiaomo.common.date.DateUtil;
 import com.xiaoxiaomo.hbase.utils.HFileLoader;
 import com.xiaoxiaomo.hbase.utils.IndexUtils;
 import org.apache.hadoop.conf.Configuration;

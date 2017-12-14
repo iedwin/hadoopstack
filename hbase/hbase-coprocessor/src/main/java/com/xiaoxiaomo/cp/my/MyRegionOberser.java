@@ -1,4 +1,4 @@
-package com.xiaoxiaomo.hbase.coprocessor;
+package com.xiaoxiaomo.cp.my;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.hbase.HBaseConfiguration;

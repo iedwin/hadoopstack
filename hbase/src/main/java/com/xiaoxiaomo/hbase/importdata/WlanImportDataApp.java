@@ -76,7 +76,6 @@ public class WlanImportDataApp {
 	}
 	
 	public static class WlanImportDataReducer extends TableReducer<Text, Text, NullWritable>{
-		@Override
 		protected void reduce(Text k2, Iterable<Text> v2s, Reducer.Context context)
 				throws IOException, InterruptedException {
 			for (Text v2 : v2s) {

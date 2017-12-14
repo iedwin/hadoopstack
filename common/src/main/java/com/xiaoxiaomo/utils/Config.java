@@ -1,4 +1,4 @@
-package com.xiaoxiaomo.hbase.pro.utils;
+package com.xiaoxiaomo.utils;
 
 import java.io.IOException;
 import java.io.InputStream;

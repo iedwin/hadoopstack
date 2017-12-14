@@ -1,4 +1,4 @@
-package com.xiaoxiaomo.hbase.coprocessor;
+package com.xiaoxiaomo.cp.my;
 
 import org.apache.hadoop.hbase.HRegionInfo;
 import org.apache.hadoop.hbase.HTableDescriptor;

@@ -1,4 +1,4 @@
-package com.xiaoxiaomo.hbase.pro.utils;
+package com.xiaoxiaomo.common.jdbc;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
 

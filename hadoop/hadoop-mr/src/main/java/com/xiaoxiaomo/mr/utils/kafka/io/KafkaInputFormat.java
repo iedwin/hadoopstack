@@ -2,7 +2,7 @@ package com.xiaoxiaomo.mr.utils.kafka.io;
 
 import com.xiaoxiaomo.mr.utils.kafka.CheckpointManager;
 import com.xiaoxiaomo.mr.utils.kafka.KafkaZkUtils;
-import com.xiaoxiaomo.utils.DateUtil;
+import com.xiaoxiaomo.common.date.DateUtil;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.io.BytesWritable;
 import org.apache.hadoop.mapreduce.*;

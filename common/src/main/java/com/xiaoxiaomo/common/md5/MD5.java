@@ -1,4 +1,4 @@
-package com.xiaoxiaomo.utils;
+package com.xiaoxiaomo.common.md5;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

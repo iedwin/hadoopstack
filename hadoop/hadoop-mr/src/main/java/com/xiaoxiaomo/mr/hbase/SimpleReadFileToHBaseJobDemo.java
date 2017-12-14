@@ -1,8 +1,8 @@
 package com.xiaoxiaomo.mr.hbase;
 
 import com.xiaoxiaomo.mr.constants.ConstantsTableInfo;
-import com.xiaoxiaomo.utils.DateUtil;
-import com.xiaoxiaomo.utils.MD5;
+import com.xiaoxiaomo.common.date.DateUtil;
+import com.xiaoxiaomo.common.md5.MD5;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;

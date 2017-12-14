@@ -1,4 +1,4 @@
-package com.xiaoxiaomo.hbase.coprocessor;
+package com.xiaoxiaomo.cp.count;
 
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.TableName;

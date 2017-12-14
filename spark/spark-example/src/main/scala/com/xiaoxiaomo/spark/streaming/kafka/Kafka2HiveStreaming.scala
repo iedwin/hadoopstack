@@ -1,10 +1,10 @@
 package com.xiaoxiaomo.spark.streaming.kafka
 
 import com.alibaba.fastjson.{JSON, JSONArray, JSONObject}
+import com.xiaoxiaomo.common.date.DateUtil
 import com.xiaoxiaomo.common.hadoop.MyFileMergeUtils
 import com.xiaoxiaomo.spark.streaming.option.Dict
 import com.xiaoxiaomo.spark.streaming.util.StreamingUtils
-import com.xiaoxiaomo.utils.DateUtil
 import org.apache.hadoop.conf.Configuration
 import org.apache.hadoop.fs.{FileSystem, Path}
 import org.apache.spark.TaskContext

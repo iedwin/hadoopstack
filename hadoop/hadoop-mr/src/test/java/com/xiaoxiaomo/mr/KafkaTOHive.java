@@ -1,6 +1,6 @@
 package com.xiaoxiaomo.mr;
 
-import com.xiaoxiaomo.utils.MD5;
+import com.xiaoxiaomo.common.md5.MD5;
 import com.xiaoxiaomo.mr.utils.kafka.CheckpointManager;
 import com.xiaoxiaomo.mr.utils.kafka.io.KafkaInputFormat;
 import com.xiaoxiaomo.mr.utils.kafka.io.MsgMetadataWritable;

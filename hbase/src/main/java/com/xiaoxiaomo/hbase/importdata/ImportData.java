@@ -112,7 +112,6 @@ import java.util.Date;
     public static class HBaseReduce extends TableReducer< Text , Text, NullWritable>{
         Put put = null ;
 
-        @Override
         protected void reduce(Text key, Iterable<Text> values, Reducer.Context context) throws IOException, InterruptedException {
 
             for (Text value : values) {

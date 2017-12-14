@@ -2,7 +2,7 @@ package com.xiaoxiaomo.mr.hbase;
 
 import com.alibaba.fastjson.JSONObject;
 import com.google.gson.JsonSyntaxException;
-import com.xiaoxiaomo.utils.MD5;
+import com.xiaoxiaomo.common.md5.MD5;
 import com.xiaoxiaomo.mr.constants.ConstantsTableInfo;
 import com.xiaoxiaomo.mr.utils.kafka.CheckpointManager;
 import com.xiaoxiaomo.mr.utils.kafka.io.KafkaInputFormat;

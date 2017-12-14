@@ -1,4 +1,4 @@
-package com.xiaoxiaomo.hbase.pro.utils;
+package com.xiaoxiaomo.utils;
 
 /**
  * Created by xiaoxiaomo on 2015/5/4.

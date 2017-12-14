@@ -1,4 +1,4 @@
-package com.xiaoxiaomo.hbase.pro.utils;
+package com.xiaoxiaomo.hadoop.hdfs;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.hadoop.conf.Configuration;

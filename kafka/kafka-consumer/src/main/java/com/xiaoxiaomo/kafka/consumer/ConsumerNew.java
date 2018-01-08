@@ -28,6 +28,9 @@ public class ConsumerNew {
         props.put("session.timeout.ms", "30000");
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
+
+//        props.put("auto.offset.reset","earliest"); 重新开始消费
+
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
         consumer.subscribe(Arrays.asList("honeycomb-gw-shebao"));
         while (true) {

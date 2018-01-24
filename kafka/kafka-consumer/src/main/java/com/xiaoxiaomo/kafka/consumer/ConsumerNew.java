@@ -6,7 +6,12 @@ import org.apache.kafka.clients.consumer.KafkaConsumer;
 
 import java.util.Arrays;
 import java.util.Properties;
+
+
+
 /**
+ * org.apache.kafka.clients 下面的consumer包
+ *
  * Created by TangXD on 2017/10/20.
  */
 public class ConsumerNew {
@@ -32,6 +37,8 @@ public class ConsumerNew {
 //        props.put("auto.offset.reset","earliest"); 重新开始消费
 
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
+
+
         consumer.subscribe(Arrays.asList("honeycomb-gw-shebao"));
         while (true) {
             ConsumerRecords<String, String> records = consumer.poll(100);

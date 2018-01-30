@@ -3,9 +3,11 @@ package com.xiaoxiaomo.kafka.consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
+import org.apache.kafka.common.TopicPartition;
 
 import java.util.Arrays;
 import java.util.Properties;
+import java.util.Set;
 
 
 /**
@@ -34,7 +36,7 @@ public class ConsumerNewWithOffset {
         Properties props = new Properties();
         props.put("bootstrap.servers", "10.141.5.22:9092,10.141.5.25:9092,10.141.5.26:9092");
         props.put("group.id", "xxo-test");
-        props.put("enable.auto.commit", "true");
+        props.put("enable.auto.commit", "false");
         props.put("auto.commit.interval.ms", "100");
         props.put("session.timeout.ms", "30000");
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
@@ -50,16 +52,18 @@ public class ConsumerNewWithOffset {
 
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
         consumer.subscribe(Arrays.asList(topic));
-        while (true) {
+//        while (true) {
             ConsumerRecords<String, String> records = consumer.poll(Long.MAX_VALUE);
             System.out.println("============== 在这里批量获取 data ===========");
-            for (ConsumerRecord<String, String> record : records) {
+        System.out.println(records.count());
+        Set<TopicPartition> partitions = records.partitions();
+        for (ConsumerRecord<String, String> record : records) {
                 System.out.print("offset:"+record.offset() +  " ");
 //                System.out.println("offset:"+record.offset() +  " key:"+record.key() + "  value"+record.value());
             }
             System.out.println();
-            consumer.commitSync();
-        }
+//            consumer.commitSync();
+//        }
 
 
     }

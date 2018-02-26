@@ -27,7 +27,7 @@ public class ConsumerNew {
 
         Properties props = new Properties();
         props.put("bootstrap.servers", "10.141.5.22:9092,10.141.5.25:9092,10.141.5.26:9092");
-        props.put("group.id", "xxo-test");
+        props.put("group.id", "fetch-xybg");
         props.put("enable.auto.commit", "true");
         props.put("auto.commit.interval.ms", "1000");
         props.put("session.timeout.ms", "30000");
@@ -39,7 +39,7 @@ public class ConsumerNew {
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
 
 
-        consumer.subscribe(Arrays.asList("honeycomb-gw-shebao"));
+        consumer.subscribe(Arrays.asList("honeycomb-gw-pbccrc"));
         while (true) {
             ConsumerRecords<String, String> records = consumer.poll(100);
             try {

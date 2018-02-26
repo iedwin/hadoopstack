@@ -8,7 +8,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>kafka-consumer</artifactId>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>kafka-consumer</name>
     <build>
@@ -23,6 +23,9 @@
             </plugin>
         </plugins>
     </build>
+    <modules>
+        <module>kafka-consumer-0.8.2</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

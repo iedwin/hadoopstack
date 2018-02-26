@@ -16,7 +16,7 @@ public class RandomMsgProduce {
 
         //1. 读取配置文件
         Properties props = new Properties();
-        props.load(ProduceTest.class.getClassLoader().getResourceAsStream("producer.properties"));
+        props.load(RandomMsgProduce.class.getClassLoader().getResourceAsStream("producer.properties"));
 
         //2. 创建生产者
         Producer<String, String> producer = new Producer<String, String>(new ProducerConfig(props));
